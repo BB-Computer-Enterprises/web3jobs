@@ -38,5 +38,5 @@ export const sampleCompanies = () => {
         companies[i] = createCompanyObject(createRandomWord(5), i);
     }
 
-    return companies;
+    return {data: companies};
 }
