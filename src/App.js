@@ -35,7 +35,7 @@ function App() {
     return (
         <div className="min-w-full min-h-screen flex items-center justify-center bg-gray-200">
             <Router>
-                <nav class="flex items-center justify-between flex-wrap bg-teal-500 p-6">
+                <nav className="flex items-center justify-between flex-wrap bg-teal-500 p-6">
                     <ul class="flex">
                         <li class="flex-1 mr-2">
                             <Link to="/">Home</Link>
