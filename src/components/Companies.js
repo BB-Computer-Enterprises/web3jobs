@@ -50,7 +50,7 @@ const Companies = () => {
                     >
                         {companies.length ? (
                             companies.map((company) => (
-                                <h1>Company Name: {company.companyName}</h1>
+                                <h1 key={company.companyId}>Company Name: {company.companyName}</h1>
                             ))
                         ) : (
                             <span
