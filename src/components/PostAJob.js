@@ -1,85 +1,61 @@
 import { useState, useEffect } from "react";
-import { useFormik } from 'formik';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { supabase } from "../lib/api";
 import { isLocal } from "../util/local";
 
 const PostAJob = () => {
-  // Pass the useFormik() hook initial form values, a validate function that will be called when
-  // form values change or fields are blurred, and a submit function that will
-  // be called when the form is submitted
-  const formik = useFormik({
-    initialValues: {
-        contactEmail: '',
-        companyName: '',
-        jobTitle: '',
-        description: '',
-        applicationURL: '',
-    },
-    validationSchema: Yup.object({
-        contactEmail: Yup.string().email('Invalid email address').required('Required'),
-        companyName: Yup.string().required('Company name Required'),
-        jobTitle: Yup.string().required('Job title Required'),
-        description: Yup.string().min(20, 'That\'s a pretty short description, dont you think 🤔?').required('Description Required'),
-        applicationURL: Yup.string().required('Application URL Required'),
-    }),
-    onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
-    },
-  });
 
-  // TODO: add validation for application email
+    return (
+        // TODO: add validation for application email
 
-  return (
-    <form onSubmit={formik.handleSubmit}>
-      <label htmlFor="contactEmail">Your Email</label>
-      <input
-        id="contactEmail"
-        name="contactEmail"
-        type="email"
-        {...formik.getFieldProps('contactEmail')}
-      />
-      {formik.touched.contactEmail && formik.errors.contactEmail ? <div>{formik.errors.contactEmail}</div> : null}
+        <Formik
+            initialValues={{
+                contactEmail: '',
+                companyName: '',
+                jobTitle: '',
+                description: '',
+                applicationURL: '',
+            }}
+            validationSchema={Yup.object({
+                contactEmail: Yup.string().email('Invalid email address').required('Required'),
+                companyName: Yup.string().required('Company name Required'),
+                jobTitle: Yup.string().required('Job title Required'),
+                description: Yup.string().min(20, 'That\'s a pretty short description, dont you think 🤔?').required('Description Required'),
+                applicationURL: Yup.string().required('Application URL Required'),
+            })}
+            onSubmit={(values, { setSubmitting }) => {
+                setTimeout(() => {
+                    alert(JSON.stringify(values, null, 2));
+                    setSubmitting(false);
+                }, 400);
+            }}
+        >
+                <Form>
+                    <label htmlFor="contactEmail">Your Email</label>
+                    <Field name="contactEmail" type="email"/>
+                    <ErrorMessage name="contactEmail" />
 
-      <label htmlFor="companyName">Company name</label>
-      <input
-        id="companyName"
-        name="companyName"
-        type="text"
-        {...formik.getFieldProps('companyName')}
-      />
-      {formik.touched.companyName && formik.errors.companyName ? <div>{formik.errors.companyName}</div> : null}
+                    <label htmlFor="companyName">Company name</label>
+                    <Field name="companyName" type="text"/>
+                    <ErrorMessage name="companyName" />
 
-      <label htmlFor="jobTitle">Job title</label>
-      <input
-        id="jobTitle"
-        name="jobTitle"
-        type="text"
-        {...formik.getFieldProps('jobTitle')}
-      />
-      {formik.touched.jobTitle && formik.errors.jobTitle ? <div>{formik.errors.jobTitle}</div> : null}
+                    <label htmlFor="jobTitle">Job title</label>
+                    <Field name="jobTitle" type="text"/>
+                    <ErrorMessage name="jobTitle" />
 
-      <label htmlFor="description">Job Description</label>
-      <input
-        id="description"
-        name="description"
-        type="text"
-        {...formik.getFieldProps('description')}
-      />
-      {formik.touched.description && formik.errors.description ? <div>{formik.errors.description}</div> : null}
+                    <label htmlFor="description">Job Description</label>
+                    <Field name="description" type="text"/>
+                    <ErrorMessage name="description" />
 
-      <label htmlFor="applicationURL">Apply URL (or email)</label>
-      <input
-        id="applicationURL"
-        name="applicationURL"
-        type="text"
-        {...formik.getFieldProps('applicationURL')}
-      />
-      {formik.touched.applicationURL && formik.errors.applicationURL ? <div>{formik.errors.applicationURL}</div> : null}
+                    <label htmlFor="applicationURL">Apply URL (or email)</label>
+                    <Field name="applicationURL" type="text"/>
+                    <ErrorMessage name="applicationURL" />
 
-      <button type="submit">Post your job</button>
-    </form>
-  );
+                    <button type="submit">Post your job</button>
+                </Form>
+        </Formik>
+    );
 };
 
 // const PostAJob = () => {
@@ -91,11 +67,11 @@ const PostAJob = () => {
 //     // }, []);
 
 //     // const fetchJobs = async () => {
-//     //     let { data: jobs, error } = isLocal ? sampleJobs() :
+//     //     let {data: jobs, error } = isLocal ? sampleJobs() :
 //     //         await supabase
 //     //             .from("jobs")
 //     //             .select("*")
-//     //             .order("id", { ascending: false });
+//     //             .order("id", {ascending: false });
 
 //     //     if (error) setError(error);
 //     //     else setJobs(jobs);
