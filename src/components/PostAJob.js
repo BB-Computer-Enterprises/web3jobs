@@ -1,8 +1,24 @@
 import { useState, useEffect } from "react";
-import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { Formik, Form, useField } from 'formik';
 import * as Yup from 'yup';
 import { supabase } from "../lib/api";
 import { isLocal } from "../util/local";
+
+const MyTextInput = ({ label, ...props }) => {
+    // useField() returns [formik.getFieldProps(), formik.getFieldMeta()]
+    // which we can spread on <input>. We can use field meta to show an error
+    // message if the field is invalid and it has been touched (i.e. visited)
+    const [field, meta] = useField(props);
+    return (
+        <>
+            <label htmlFor={props.id || props.name}>{label}</label>
+            <input className="text-input" {...field} {...props} />
+            {meta.touched && meta.error ? (
+                <div className="error">{meta.error}</div>
+            ) : null}
+        </>
+    );
+};
 
 const PostAJob = () => {
 
@@ -31,29 +47,39 @@ const PostAJob = () => {
                 }, 400);
             }}
         >
-                <Form>
-                    <label htmlFor="contactEmail">Your Email</label>
-                    <Field name="contactEmail" type="email"/>
-                    <ErrorMessage name="contactEmail" />
+            <Form>
+                <MyTextInput
+                    label="Your Email"
+                    name="contactEmail"
+                    type="email"
+                />
 
-                    <label htmlFor="companyName">Company name</label>
-                    <Field name="companyName" type="text"/>
-                    <ErrorMessage name="companyName" />
+                <MyTextInput
+                    label="Company name"
+                    name="companyName"
+                    type="text"
+                />
 
-                    <label htmlFor="jobTitle">Job title</label>
-                    <Field name="jobTitle" type="text"/>
-                    <ErrorMessage name="jobTitle" />
+                <MyTextInput
+                    label="Job title"
+                    name="jobTitle"
+                    type="text"
+                />
 
-                    <label htmlFor="description">Job Description</label>
-                    <Field name="description" type="text"/>
-                    <ErrorMessage name="description" />
+                <MyTextInput
+                    label="Job description"
+                    name="description"
+                    type="text"
+                />
 
-                    <label htmlFor="applicationURL">Apply URL (or email)</label>
-                    <Field name="applicationURL" type="text"/>
-                    <ErrorMessage name="applicationURL" />
+                <MyTextInput
+                    label="Apply URL (or email)"
+                    name="applicationURL"
+                    type="text"
+                />
 
-                    <button type="submit">Post your job</button>
-                </Form>
+                <button type="submit">Post your job</button>
+            </Form>
         </Formik>
     );
 };
