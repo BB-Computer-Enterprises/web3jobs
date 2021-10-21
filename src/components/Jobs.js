@@ -18,8 +18,6 @@ const Jobs = () => {
                 .select("*")
                 .order("id", { ascending: false });
 
-        console.log(jobs)
-
         if (error) setError(error);
         else setJobs(jobs);
     };
