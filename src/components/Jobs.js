@@ -50,7 +50,11 @@ const Jobs = () => {
                     >
                         {jobs.length ? (
                             jobs.map((job) => (
-                                <h1 key={job.jobId}>Job Title: {job.title}</h1>
+                                <div>
+                                    <h1 key={job.jobId}>Job Title: {job.title}</h1>
+                                    <p>Created: {new Date(job.datePosted).toDateString()}</p>
+                                    <p>Description: {job.description}</p>
+                                </div>
                             ))
                         ) : (
                             <span
