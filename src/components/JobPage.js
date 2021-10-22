@@ -6,17 +6,31 @@ const JobPage = ({ match }) => {
     // const [data, setData] = useState();
 
     const {
-        params: { jId, jTitle },
+        params: { jid, jtitle },
     } = match;
 
     useEffect(() => {
     }, []);
 
     return (
-        <>
-            <h1>Job Title:{`${jTitle}`}</h1>
-            <Link to="/web3-jobs">Back to All Jobs</Link>
-        </>
+        <div>
+            <div className={"w-screen fixed flex flex-col min-h-screen bg-gray-50"}>
+                <header
+                    className={
+                        "flex justify-between items-center px-4 h-16 bg-gray-900"
+                    }
+                >
+                    <span
+                        className={
+                            "text-2xl sm:text-4xl text-white border-b font-sans"
+                        }
+                    >
+                        Job Title:{`${jtitle}`}
+                    </span>
+                </header>
+                <Link to="/web3-jobs">Back to All Jobs</Link>
+            </div>
+        </div>
     );
 };
 

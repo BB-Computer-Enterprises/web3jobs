@@ -37,7 +37,7 @@ function App() {
                         </li>
                     </ul>
                 </nav>
-                <Switch>
+                {/* <Switch> */}
                     <Route exact path="/about">
                         <About />
                     </Route>
@@ -47,10 +47,6 @@ function App() {
                     <Route exact path="/post-web3-job">
                         <PostAJob />
                     </Route>
-                    {/* <Route path='/web3-jobs/:jTitle-:cName/:jId' render={(props) => {
-                        return (<Jobs {...props} />)
-                    }}>
-                    </Route> */}
 
                     {/* 
                     TODO: Implement
@@ -62,11 +58,11 @@ function App() {
                     <Route path="/web3-jobs">
                         <AllJobs />
                     </Route>
-                    <Route path="/:jTitle-:cName/:jId" component={JobPage} />
+                    <Route path="/web3-jobs/:jtitle-:cname/:jid" component={JobPage} />
                     <Route path="/">
                         <Home />
                     </Route>
-                </Switch>
+                {/* </Switch> */}
             </Router>
         </div>
     );
