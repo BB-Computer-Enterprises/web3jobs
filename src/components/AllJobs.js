@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { sampleJobs } from "../mockData/genJobs";
 import { supabase } from "../lib/api";
 import { isLocal } from "../util/local";
-import { removeWhiteSpace } from "../util/removeWhiteSpace";
+import { removeWhiteSpace } from "../util/rmSpace";
 
 const AllJobs = () => {
     const [jobs, setJobs] = useState([]);
