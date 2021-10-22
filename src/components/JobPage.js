@@ -7,7 +7,7 @@ const JobPage = ({ match }) => {
 
     const {
         params: { jId, jTitle },
-      } = match;
+    } = match;
 
     useEffect(() => {
     }, []);

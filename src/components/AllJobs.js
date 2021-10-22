@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { sampleJobs } from "../mockData/genJobs";
 import { supabase } from "../lib/api";
@@ -51,11 +51,11 @@ const AllJobs = () => {
                     >
                         {jobs.length ? (
                             jobs.map((job) => (
-                                <Router><div key={job.jobId}>
+                                <div key={job.jobId}>
                                     <Link to={`/${removeWhiteSpace(job.title)}-companyName/${job.jobId}`}><h1>Job Title: {job.title}</h1></Link>
                                     <p>Created: {new Date(job.datePosted).toDateString()}</p>
                                     <p>Description: {job.description}</p>
-                                </div></Router>
+                                </div>
                             ))
                         ) : (
                             <span
