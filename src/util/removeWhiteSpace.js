@@ -1,3 +1,3 @@
 export const removeWhiteSpace = (name) => {
-    return name.replaceAll(' ', '-');
+    return name.replace(/ /g, '-');
 }
