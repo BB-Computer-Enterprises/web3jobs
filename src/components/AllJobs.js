@@ -1,9 +1,15 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { COMPANY_NAME, JOBS_URL, JOB_DATE_POSTED, JOB_DESCRIPTION, JOB_ID, JOB_TITLE } from "../lib/constants";
-
-import { getAllJobsAndCompaniesInReverseDate} from "../lib/db";
+import { getAllJobsAndCompaniesInReverseDate } from "../lib/db";
 import { makeFriendlyUrl } from "../util/sanitize";
+import {
+    COMPANY_NAME,
+    JOBS_URL,
+    JOB_DATE_POSTED,
+    JOB_DESCRIPTION,
+    JOB_ID,
+    JOB_TITLE
+} from "../lib/constants";
 
 const AllJobs = () => {
     const [jobs, setJobs] = useState([]);
@@ -27,7 +33,7 @@ const AllJobs = () => {
     // function that will destructure the job object
     // it pulls out the title, id and company name to be used in the URL
     const generateLinkURL = job => {
-        const {[JOB_TITLE]: title, [JOB_ID]: id, companies: {[COMPANY_NAME]: cName}} = job;
+        const { [JOB_TITLE]: title, [JOB_ID]: id, companies: { [COMPANY_NAME]: cName } } = job;
         return `${JOBS_URL}/${makeFriendlyUrl(title)}-${makeFriendlyUrl(cName)}/${id}`
     }
 
@@ -56,14 +62,14 @@ const AllJobs = () => {
                             } grid-cols-1 h-2/3 overflow-y-scroll first:mt-8`}
                     >
                         {jobs.length ? (
-                            jobs.map((job) =>(
+                            jobs.map((job) => (
                                 <div key={job[JOB_ID]}>
-                                    <Link to={{pathname:generateLinkURL(job), state:{job}}}><h1>Job Title: {job[JOB_TITLE]}</h1></Link>
+                                    <Link to={{ pathname: generateLinkURL(job), state: { job } }}><h1>Job Title: {job[JOB_TITLE]}</h1></Link>
                                     <p>Created: {new Date(job[JOB_DATE_POSTED]).toDateString()}</p>
                                     <p>Description: {job[JOB_DESCRIPTION]}</p>
                                 </div>
                             ))
-                        ) :(
+                        ) : (
                             <span
                                 className={
                                     "h-full flex justify-center items-center"
