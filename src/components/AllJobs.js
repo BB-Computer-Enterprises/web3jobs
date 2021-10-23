@@ -58,7 +58,6 @@ const AllJobs = () => {
                         {jobs.length ? (
                             jobs.map((job) =>(
                                 <div key={job.jobId}>
-                                    {/* // TODO: Fix the Company Name path  */}
                                     <Link to={{pathname:generateLinkURL(job), state:{job:job}}}><h1>Job Title: {job.jobTitle}</h1></Link>
                                     <p>Created: {new Date(job.jobDatePosted).toDateString()}</p>
                                     <p>Description: {job.jobDescription}</p>

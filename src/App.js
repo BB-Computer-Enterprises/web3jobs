@@ -12,6 +12,14 @@ import AllJobs from './components/AllJobs';
 import JobPage from './components/JobPage';
 import NotFound from './components/NotFound';
 import Footer from './components/Footer';
+import {
+    ABOUT_URL,
+    COMPANIES_URL,
+    COMPANY_PAGE_URL,
+    JOBS_URL,
+    JOB_PAGE_URL,
+    POST_A_JOB_URL
+} from "./lib/constants";
 
 
 function App() {
@@ -39,13 +47,14 @@ function App() {
                 </nav>
                 <Switch>
 
-                    <Route exact path="/about">
+                    <Route exact path={ABOUT_URL}>
                         <About />
                     </Route>
-                    <Route exact path="/web3-companies">
+                    <Route path={COMPANY_PAGE_URL} component={JobPage} />
+                    <Route exact path={COMPANIES_URL}>
                         <Companies />
                     </Route>
-                    <Route exact path="/post-web3-job">
+                    <Route exact path={POST_A_JOB_URL}>
                         <PostAJob />
                     </Route>
 
@@ -55,8 +64,8 @@ function App() {
                         <NotFound />
                     </Route> 
                     */}
-                    <Route path="/web3-jobs/:jtitle-:cname/:jid" component={JobPage} />
-                    <Route path="/web3-jobs">
+                    <Route path={JOB_PAGE_URL} component={JobPage} />
+                    <Route path={JOBS_URL}>
                         <AllJobs />
                     </Route>
                     <Route path="/">

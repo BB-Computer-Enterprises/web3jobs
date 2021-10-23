@@ -1,6 +1,14 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { COMPANY_APPLICATION_URL, COMPANY_NAME, JOB_DESCRIPTION, JOB_TITLE } from "../lib/constants";
+import {
+    COMPANY_APPLICATION_URL,
+    COMPANY_NAME,
+    COMPANY_URL,
+    JOBS_URL,
+    JOB_DESCRIPTION,
+    JOB_TITLE
+}
+    from "../lib/constants";
 
 const JobPage = job => {
     const [isLoading, setIsLoading] = useState(true);
@@ -14,7 +22,7 @@ const JobPage = job => {
                 job: {
                     [JOB_TITLE]: jTitle,
                     [JOB_DESCRIPTION]: jDesc,
-                    companies:{
+                    companies: {
                         [COMPANY_APPLICATION_URL]: cAppUrl,
                         [COMPANY_NAME]: cName
                     }
@@ -46,8 +54,9 @@ const JobPage = job => {
                     Apply URL: {`${cAppUrl}`}
                 </p>
 
-                <Link to="/web3-jobs">Back to All Jobs</Link>
-                <Link to="/web3-jobs">More jobs with {`${cName}`}</Link>
+                <Link to={JOBS_URL}>Back to All Jobs</Link>
+                {/*UPDATE THIS URL PATH TO POINT TO COMPANY PAGE*/}
+                <Link to={COMPANY_URL}>More jobs with {`${cName}`}</Link>
             </div>
         </div>
     );
