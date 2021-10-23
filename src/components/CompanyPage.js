@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { getLinkedJobs } from "../lib/db";
 import {
     COMPANIES_URL,
-    COMPANY_APPLICATION_URL,
     COMPANY_DESCRIPTION,
     COMPANY_ID,
     COMPANY_NAME,
