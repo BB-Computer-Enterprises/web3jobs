@@ -1,25 +1,22 @@
 import { useState, useEffect } from "react";
-import { sampleCompanies } from "../mockData/genCompanies.js";
-import { supabase } from "../lib/api";
-import { isLocal } from "../util/local";
+import { getAllCompaniesInAlphabetic } from "../lib/database/dbCompanies";
 
 const Companies = () => {
     const [companies, setCompanies] = useState([]);
     const [errorText, setError] = useState("");
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         fetchCompanies().catch(console.error);
     }, []);
 
     const fetchCompanies = async () => {
-        let { data: companies, error } =
-            await supabase
-                .from("companies")
-                .select("*")
-                .order("cId", { ascending: false });
-
+        let { data: companies, error } = await getAllCompaniesInAlphabetic();
         if (error) setError(error);
-        else setCompanies(companies);
+        else {
+            setCompanies(companies)
+            setIsLoading(false);
+        };
     };
 
     return (
@@ -35,7 +32,7 @@ const Companies = () => {
                             "text-2xl sm:text-4xl text-white border-b font-sans"
                         }
                     >
-                        Companies Screen
+                        Web 3.0 Companies
                     </span>
                 </header>
                 <div
@@ -47,7 +44,7 @@ const Companies = () => {
                             } grid-cols-1 h-2/3 overflow-y-scroll first:mt-8`}
                     >
                         {companies.length ? (
-                            companies.map((company) => (
+                            companies.map(company => (
                                 <h1 key={company.companyId}>Company Name: {company.companyName}</h1>
                             ))
                         ) : (
@@ -56,7 +53,7 @@ const Companies = () => {
                                     "h-full flex justify-center items-center"
                                 }
                             >
-                                You do have any companies yet!
+                                {isLoading ? 'Loading...' : 'No companies! 👀'}
                             </span>
                         )}
                     </div>
