@@ -12,9 +12,6 @@ import {
 
 const JobPage = job => {
     const [isLoading, setIsLoading] = useState(true);
-    // const [data, setData] = useState();
-
-    console.log(job);
 
     const {
         location: {

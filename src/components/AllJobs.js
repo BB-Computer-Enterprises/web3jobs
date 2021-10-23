@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { COMPANY_NAME, JOB_ID, JOB_TITLE } from "../lib/constants";
+import { COMPANY_NAME, JOBS_URL, JOB_DATE_POSTED, JOB_DESCRIPTION, JOB_ID, JOB_TITLE } from "../lib/constants";
 
 import { getAllJobsAndCompaniesInReverseDate} from "../lib/db";
 import { removeWhiteSpace } from "../util/rmSpace";
@@ -28,7 +28,7 @@ const AllJobs = () => {
     // it pulls out the title, id and company name to be used in the URL
     const generateLinkURL = job => {
         const {[JOB_TITLE]: title, [JOB_ID]: id, companies: {[COMPANY_NAME]: cName}} = job;
-        return `/web3-jobs/${removeWhiteSpace(title)}-${removeWhiteSpace(cName)}/${id}`
+        return `${JOBS_URL}/${removeWhiteSpace(title)}-${removeWhiteSpace(cName)}/${id}`
     }
 
     return (
@@ -57,10 +57,10 @@ const AllJobs = () => {
                     >
                         {jobs.length ? (
                             jobs.map((job) =>(
-                                <div key={job.jobId}>
-                                    <Link to={{pathname:generateLinkURL(job), state:{job:job}}}><h1>Job Title: {job.jobTitle}</h1></Link>
-                                    <p>Created: {new Date(job.jobDatePosted).toDateString()}</p>
-                                    <p>Description: {job.jobDescription}</p>
+                                <div key={job[JOB_ID]}>
+                                    <Link to={{pathname:generateLinkURL(job), state:{job}}}><h1>Job Title: {job[JOB_TITLE]}</h1></Link>
+                                    <p>Created: {new Date(job[JOB_DATE_POSTED]).toDateString()}</p>
+                                    <p>Description: {job[JOB_DESCRIPTION]}</p>
                                 </div>
                             ))
                         ) :(
