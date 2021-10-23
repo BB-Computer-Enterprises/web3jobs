@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
-import { getAllCompaniesInAlphabetic } from "../lib/database/dbCompanies";
+import { Link } from "react-router-dom";
+import { COMPANIES_URL, COMPANY_DESCRIPTION, COMPANY_ID, COMPANY_NAME } from "../lib/constants";
+import { getAllCompaniesInAlphabetic } from "../lib/db";
 
 const Companies = () => {
     const [companies, setCompanies] = useState([]);
@@ -18,6 +20,14 @@ const Companies = () => {
             setIsLoading(false);
         };
     };
+
+    // function that will destructure the company object
+    // it pulls out XXX to be used in the URL
+    const generateLinkURL = company => {
+        // const {[JOB_TITLE]: title, [JOB_ID]: id, companies: {[COMPANY_NAME]: cName}} = company;
+        // return `${JOBS_URL}/${removeWhiteSpace(title)}-${removeWhiteSpace(cName)}/${id}`
+        return `${COMPANIES_URL}/companyName`
+    }
 
     return (
         <div>
@@ -45,7 +55,13 @@ const Companies = () => {
                     >
                         {companies.length ? (
                             companies.map(company => (
-                                <h1 key={company.companyId}>Company Name: {company.companyName}</h1>
+                                <div>
+                                    <Link to={{ pathname: generateLinkURL(company), state: { company } }}>
+                                        <h1 key={company[COMPANY_ID]}>Company Name: {company[COMPANY_NAME]}</h1>
+                                    </Link>
+
+                                    <p>Description: {company[COMPANY_DESCRIPTION]}</p>
+                                </div>
                             ))
                         ) : (
                             <span

@@ -10,6 +10,7 @@ import Companies from './components/Companies';
 import PostAJob from './components/PostAJob';
 import AllJobs from './components/AllJobs';
 import JobPage from './components/JobPage';
+import CompanyPage from './components/CompanyPage';
 import NotFound from './components/NotFound';
 import Footer from './components/Footer';
 import {
@@ -50,7 +51,7 @@ function App() {
                     <Route exact path={ABOUT_URL}>
                         <About />
                     </Route>
-                    <Route path={COMPANY_PAGE_URL} component={JobPage} />
+                    <Route path={COMPANY_PAGE_URL} component={CompanyPage} />
                     <Route exact path={COMPANIES_URL}>
                         <Companies />
                     </Route>
