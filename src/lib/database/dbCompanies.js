@@ -1,8 +1,11 @@
 import { supabase } from "../api";
-import {getAll} from './dbCommon';
+import { getAll } from './dbCommon';
+import {getAllLinkedCompanies} from './dbJobs'
 import {
+    COMPANY_ID,
     COMPANY_NAME,
-    COMPANY_TABLE
+    COMPANY_TABLE,
+    JOBS_TABLE
 } from "../constants";
 
 //*********COMPANIES SECTION
@@ -21,6 +24,15 @@ export const getAllCompanies = () => {
  */
 export const getAllCompaniesInAlphabetic = () => {
     return getAllCompanies().order(COMPANY_NAME, { ascending: true });
+}
+
+/**
+ * 
+ * @param {int} companyId 
+ * @returns 
+ */
+export const getLinkedJobs = companyId => {
+    return getAllLinkedCompanies().match({ [COMPANY_ID]: companyId });
 }
 
 //*********END OF COMPANIES SECTION
