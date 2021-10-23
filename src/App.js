@@ -1,12 +1,8 @@
-// import { useState, useEffect } from "react";
 import {
     BrowserRouter as Router,
-    Switch,
     Route,
     Link
 } from "react-router-dom";
-// import { supabase } from "./lib/api";
-// import Auth from "./components/Auth";
 import Home from "./components/Home";
 import About from './components/About';
 import Companies from './components/Companies';
@@ -14,6 +10,7 @@ import PostAJob from './components/PostAJob';
 import AllJobs from './components/AllJobs';
 import JobPage from './components/JobPage';
 import NotFound from './components/NotFound';
+import Footer from './components/Footer';
 
 
 function App() {
@@ -65,6 +62,8 @@ function App() {
                     <Home />
                 </Route>
             </Router>
+
+            <Footer />
         </div>
     );
 }
