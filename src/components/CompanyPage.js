@@ -46,8 +46,6 @@ const CompanyPage = company => {
                 </p>
 
                 <Link to={COMPANIES_URL}>Back to All Companies</Link>
-                {/*UPDATE THIS URL PATH TO POINT TO COMPANY PAGE*/}
-                <Link to={COMPANY_URL}>More jobs with {`${cName}`}</Link>
             </div>
         </div>
     );

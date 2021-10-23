@@ -1,7 +1,13 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { COMPANIES_URL, COMPANY_DESCRIPTION, COMPANY_ID, COMPANY_NAME } from "../lib/constants";
 import { getAllCompaniesInAlphabetic } from "../lib/db";
+import {
+    COMPANIES_URL,
+    COMPANY_DESCRIPTION,
+    COMPANY_ID,
+    COMPANY_NAME
+} from "../lib/constants";
+import { makeFriendlyUrl } from "../util/sanitize";
 
 const Companies = () => {
     const [companies, setCompanies] = useState([]);
@@ -24,9 +30,9 @@ const Companies = () => {
     // function that will destructure the company object
     // it pulls out XXX to be used in the URL
     const generateLinkURL = company => {
-        // const {[JOB_TITLE]: title, [JOB_ID]: id, companies: {[COMPANY_NAME]: cName}} = company;
+        const { [COMPANY_NAME]: cName } = company;
         // return `${JOBS_URL}/${removeWhiteSpace(title)}-${removeWhiteSpace(cName)}/${id}`
-        return `${COMPANIES_URL}/companyName`
+        return `${COMPANIES_URL}/${makeFriendlyUrl(cName)}`
     }
 
     return (

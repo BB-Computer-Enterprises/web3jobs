@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { COMPANY_NAME, JOBS_URL, JOB_DATE_POSTED, JOB_DESCRIPTION, JOB_ID, JOB_TITLE } from "../lib/constants";
 
 import { getAllJobsAndCompaniesInReverseDate} from "../lib/db";
-import { removeWhiteSpace } from "../util/rmSpace";
+import { makeFriendlyUrl } from "../util/sanitize";
 
 const AllJobs = () => {
     const [jobs, setJobs] = useState([]);
@@ -28,7 +28,7 @@ const AllJobs = () => {
     // it pulls out the title, id and company name to be used in the URL
     const generateLinkURL = job => {
         const {[JOB_TITLE]: title, [JOB_ID]: id, companies: {[COMPANY_NAME]: cName}} = job;
-        return `${JOBS_URL}/${removeWhiteSpace(title)}-${removeWhiteSpace(cName)}/${id}`
+        return `${JOBS_URL}/${makeFriendlyUrl(title)}-${makeFriendlyUrl(cName)}/${id}`
     }
 
     return (
