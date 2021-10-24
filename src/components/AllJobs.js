@@ -25,8 +25,8 @@ const AllJobs = passedInJobs => {
     };
 
     return (
-        <div>
-            <div className={"w-screen fixed flex flex-col min-h-screen bg-gray-50"}>
+        <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div>
                 <header
                     className={
                         "flex justify-between items-center px-4 h-16 bg-gray-900"
