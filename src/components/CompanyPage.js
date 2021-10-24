@@ -36,7 +36,6 @@ const CompanyPage = company => {
         let { data: linkedJobs, error } = await getLinkedJobs(cId);
         if (error) setError(error);
         else {
-            console.log('LINEDDDDDDDDDDDD: ', linkedJobs)
             setJobs(linkedJobs)
             setIsLoading(false);
         };

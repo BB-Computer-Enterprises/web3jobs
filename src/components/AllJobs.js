@@ -19,7 +19,6 @@ const AllJobs = passedInJobs => {
         let { data: jobs, error } = await getAllJobsAndCompaniesInReverseDate();
         if (error) setError(error);
         else {
-            console.log('LINEDDDDDDDDDDDD: ', jobs)
             setJobs(jobs)
             setIsLoading(false);
         };
