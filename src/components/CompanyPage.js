@@ -56,6 +56,8 @@ const CompanyPage = company => {
 
                 <Link to={COMPANIES_URL}>Back to All Companies</Link>
 
+                <h1>Current jobs 👇</h1>
+
                 <JobsList jobs={linkedJobs} isLoading/>
             </div>
         </div>
