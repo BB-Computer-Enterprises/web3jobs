@@ -1,22 +1,47 @@
 import { useState, useEffect } from "react";
-import { getAllJobsAndCompaniesInReverseDate } from "@db/";
+import { getAllJobsAndCompaniesInReverseDate, getJobAndCompanyFromTag } from "@db/";
 import JobsList from "../JobsList";
 
 
-const AllJobsPage = passedInJobs => {
+const AllJobsPage = passedInTag => {
     const [jobs, setJobs] = useState([]);
     const [errorText, setError] = useState("");
     const [isLoading, setIsLoading] = useState(true);
-
-    console.log('passed ', passedInJobs)
 
     useEffect(() => {
         fetchJobs().catch(console.error);
     }, []);
 
+    const isATag = () => {
+        const { location: {
+            pathname: pathname
+        } } = passedInTag
+        return pathname.length === 0;
+    }
+
+    /**
+     * Starting with /web3-jobs/blockchain-jobs
+     * then split -> ['', 'web3-jobs', 'cool-blockchain-jobs' ]
+     * then last item -> 'cool-blockchain-jobs'
+     * then slice -> 'cool-blockchain'
+     * then replace -> 'cool blockchain'
+     * @returns string that is just a tag
+     */
+    const parseURLForTag = () => {
+        const { location: {
+            pathname: pathname
+        } } = passedInTag
+        const sectioned = pathname.split('/');
+        let lastItem = sectioned[sectioned.length - 1];
+        lastItem = lastItem.slice(0, lastItem.length - 5);
+        return lastItem.replace(/-/g, ' ');
+    }
+
     // function to pull the data from the DB
     const fetchJobs = async () => {
-        let { data: jobs, error } = await getAllJobsAndCompaniesInReverseDate();
+        let { data: jobs, error } = isATag ?
+            await getJobAndCompanyFromTag(parseURLForTag()) :
+            await getAllJobsAndCompaniesInReverseDate();
         if (error) setError(error);
         else {
             setJobs(jobs)
