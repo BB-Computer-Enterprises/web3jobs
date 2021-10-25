@@ -58,7 +58,7 @@ export default function HomePage() {
                                     {/* Illustration taken from Lucid Illustrations: https://lucid.pixsellz.io/ */}
                                     <img
                                         className="w-full lg:absolute lg:inset-y-0 lg:left-0 lg:h-full lg:w-auto lg:max-w-none"
-                                        src="https://yhsyqsnormpfxbbippdb.supabase.in/storage/v1/object/public/assets/Illustration.svg"
+                                        src="https://yhsyqsnormpfxbbippdb.supabase.in/storage/v1/object/public/assets/heroimage.svg"
                                         alt=""
                                     />
                                 </div>
