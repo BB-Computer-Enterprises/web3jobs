@@ -28,7 +28,12 @@ export const genLinks = (linkData, style) => {
  * @param {string} style 
  * @returns 
  */
-export const genLink = (linkText, path, style) => {
-    console.log('stype ', style)
-    return genLinks([{linkText, path}], style);
+export const genLink = (linkText, path, style) => genLinks([{ linkText, path }], style);
+
+export const genFooterLink = (linkText, path, style) => {
+    return (
+        <Link to={path} key={linkText} className={style}>
+            {linkText}
+        </Link>
+    )
 }

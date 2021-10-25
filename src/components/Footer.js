@@ -1,4 +1,89 @@
 import { ChevronDownIcon } from '@heroicons/react/solid'
+import { useState, useEffect } from "react";
+import { getAllTags } from "@db/";
+import { JOBS_URL } from "@config/constants";
+import { genFooterLink } from "@util/";
+import { makeFriendlyUrl } from '@util/sanitize';
+
+// This is what we will ultimately return
+// it contains the inner div's with all the fancy ass links
+const genTags = allTags => {
+    const tagsArray = getTagsFromObject(allTags);
+    const tagData = genTagData(tagsArray);
+    let returnMe = []
+
+    for (let key in tagData) { returnMe.push(innerHTMLDiv(tagData[key])) }
+
+    return returnMe;
+}
+
+// function thatcreate the Jobs Tag URL
+// It will look like - as an ex: /web3-jobs/solidity-jobs
+const tagURL = tag => `${JOBS_URL}/${makeFriendlyUrl(tag)}-jobs`;
+
+const genTagData = tagsFromDB => {
+    const rows = Math.round(tagsFromDB.length / 4);
+    let tagLinksData = {};
+
+    for (let i = 0; i < 3; i++) {
+        const start = rows * i;
+        const end = start + rows
+        const segment = tagsFromDB.slice(start, end)
+
+        tagLinksData[`col${i}`] = genColumnData(segment)
+    }
+
+    // Don't forget the last segment!
+    // It's done this way because the last column has the potential to have more rows
+    // Not everything is evenly divisible by four :) 
+    tagLinksData['col3'] = genColumnData(tagsFromDB.slice((rows * 3)));
+
+    return tagLinksData;
+}
+
+const genColumnData = tags => {
+    return tags.map(tag => {
+        const genLinkText = tgTxt => `Web3 ${tgTxt} jobs`;
+        return { linkText: genLinkText(tag), path: tagURL(tag) }
+    })
+}
+
+const getTagsFromObject = tagsFromDB => {
+    let returnMe = []
+    for (let key in tagsFromDB) {
+        returnMe.push(tagsFromDB[key]['tagName']);
+    }
+
+    return returnMe;
+}
+
+/**
+ * Expects the objects coming in to look like this
+ * { linkText: 'text', path: '/path' }
+ * 
+ * @param {array of objects} sectionItems 
+ * @param {string} divStyle 
+ * @returns HTML
+ * Spits this out 👇
+    <div>
+        <ul role="list" className="mt-4 space-y-4">
+            <li key={item.name}>
+                <Link to=path
+                    <p className={style}>link text</p>
+                <Link/>
+            </li>
+        </ul>
+    </div>
+ */
+const innerHTMLDiv = (sectionItems) => {
+    const style = "text-base text-gray-300 hover:text-white";
+
+    return sectionItems.map(item => (
+        <li key={item.linkText}>
+            {genFooterLink(item.linkText, item.path, style)}
+        </li>
+    ))
+}
 
 const navigation = {
     solutions: [
@@ -91,6 +176,20 @@ const navigation = {
 }
 
 export default function Footer() {
+    const [tags, setTags] = useState([]);
+    const [errorText, setError] = useState("");
+
+    useEffect(() => {
+        getTagsFromDB().catch(console.error);
+    }, []);
+
+    // function to pull the data from the DB
+    const getTagsFromDB = async () => {
+        let { data: tags, error } = await getAllTags();
+        if (error) setError(error);
+        else setTags(tags)
+    };
+
     return (
         <footer className="bg-gray-800" aria-labelledby="footer-heading">
             <h2 id="footer-heading" className="sr-only">
@@ -102,48 +201,24 @@ export default function Footer() {
                         <div className="md:grid md:grid-cols-2 md:gap-8">
                             <div>
                                 <ul role="list" className="mt-4 space-y-4">
-                                    {navigation.solutions.map((item) => (
-                                        <li key={item.name}>
-                                            <a href={item.href} className="text-base text-gray-300 hover:text-white">
-                                                {item.name}
-                                            </a>
-                                        </li>
-                                    ))}
+                                    {tags.length ? genTags(tags)[0] : 'Loading Tags'}
                                 </ul>
                             </div>
                             <div className="mt-12 md:mt-0">
                                 <ul role="list" className="mt-4 space-y-4">
-                                    {navigation.support.map((item) => (
-                                        <li key={item.name}>
-                                            <a href={item.href} className="text-base text-gray-300 hover:text-white">
-                                                {item.name}
-                                            </a>
-                                        </li>
-                                    ))}
+                                    {tags.length ? genTags(tags)[1] : 'Loading Tags'}
                                 </ul>
                             </div>
                         </div>
                         <div className="md:grid md:grid-cols-2 md:gap-8">
                             <div>
                                 <ul role="list" className="mt-4 space-y-4">
-                                    {navigation.company.map((item) => (
-                                        <li key={item.name}>
-                                            <a href={item.href} className="text-base text-gray-300 hover:text-white">
-                                                {item.name}
-                                            </a>
-                                        </li>
-                                    ))}
+                                    {tags.length ? genTags(tags)[2] : 'Loading Tags'}
                                 </ul>
                             </div>
                             <div className="mt-12 md:mt-0">
                                 <ul role="list" className="mt-4 space-y-4">
-                                    {navigation.legal.map((item) => (
-                                        <li key={item.name}>
-                                            <a href={item.href} className="text-base text-gray-300 hover:text-white">
-                                                {item.name}
-                                            </a>
-                                        </li>
-                                    ))}
+                                    {tags.length ? genTags(tags)[3] : 'Loading Tags'}
                                 </ul>
                             </div>
                         </div>
@@ -178,19 +253,19 @@ export default function Footer() {
 // import { getAllTags } from "@db/";
 
 // const Footer = job => {
-//     const [tags, setTags] = useState([]);
-//     const [errorText, setError] = useState("");
+    // const [tags, setTags] = useState([]);
+    // const [errorText, setError] = useState("");
 
-//     useEffect(() => {
-//         getTagsFromDB().catch(console.error);
-//     }, []);
+    // useEffect(() => {
+    //     getTagsFromDB().catch(console.error);
+    // }, []);
 
-//     // function to pull the data from the DB
-//     const getTagsFromDB = async () => {
-//         let { data: tags, error } = await getAllTags();
-//         if (error) setError(error);
-//         else setTags(tags)
-//     };
+    // // function to pull the data from the DB
+    // const getTagsFromDB = async () => {
+    //     let { data: tags, error } = await getAllTags();
+    //     if (error) setError(error);
+    //     else setTags(tags)
+    // };
 
 //     // function that will destructure the job object
 //     // it pulls out the title, id and company name to be used in the URL

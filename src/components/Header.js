@@ -70,7 +70,6 @@ const resources = [
 
 const linkData = [
     { linkText: HOME_LINK, path: '/' },
-    // { linkText: 'About', path: `${ABOUT_URL}` },
     { linkText: COMPANIES_LINK, path: COMPANIES_URL },
     { linkText: JOBS_LINK, path: JOBS_URL }
 ]
