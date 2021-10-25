@@ -46,14 +46,15 @@ const Companies = () => {
                     style={{ height: "calc(100vh - 11.5rem)" }}
                 >
                     <div className={`p-2 border flex-grow grid gap-2 ${companies.length ? "auto-rows-min" : ""} grid-cols-1 h-2/3 overflow-y-scroll first:mt-8`} >
+                    
                         {companies.length ? (
                             companies.map(company => (
-                                <div key={company[COMPANY_ID]}>
+                                <div key={company[COMPANY_ID]} className="bg-white px-4 py-5 border-b border-gray-200 sm:px-6">
                                     <Link to={{ pathname: generateLinkURL(company), state: { company }}}>
-                                        <h1>Company Name: {company[COMPANY_NAME]}</h1>
+                                        <h1 className="text-lg leading-6 font-medium text-gray-900">Company Name: {company[COMPANY_NAME]}</h1>
                                     </Link>
 
-                                    <p>Description: {company[COMPANY_DESCRIPTION]}</p>
+                                    <p className="mt-1 text-sm text-gray-500">Description: {company[COMPANY_DESCRIPTION]}</p>
                                 </div>
                             ))
                         ) : (
@@ -74,6 +75,7 @@ const Companies = () => {
                 </div>
             </div>
         </div>
+        
     );
 }
 
