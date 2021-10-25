@@ -43,7 +43,7 @@ const genTagData = tagsFromDB => {
 
 const genColumnData = tags => {
     return tags.map(tag => {
-        const genLinkText = tgTxt => `Web3 ${tgTxt} jobs`;
+        const genLinkText = tgTxt => `Web3 ${capitalize(tgTxt)} jobs`;
         return { linkText: genLinkText(tag), path: tagURL(tag) }
     })
 }
