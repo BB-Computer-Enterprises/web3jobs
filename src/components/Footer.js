@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { getAllTags } from "@db/";
 import { JOBS_URL } from "@config/constants";
 import { genFooterLink } from "@util/";
-import { makeFriendlyUrl } from '@util/sanitize';
+import { makeFriendlyUrl, capitalize } from '@util/sanitize';
 
 // This is what we will ultimately return
 // it contains the inner div's with all the fancy ass links
@@ -43,7 +43,7 @@ const genTagData = tagsFromDB => {
 
 const genColumnData = tags => {
     return tags.map(tag => {
-        const genLinkText = tgTxt => `Web3 ${tgTxt} jobs`;
+        const genLinkText = tgTxt => `Web3 ${capitalize(tgTxt)} jobs`;
         return { linkText: genLinkText(tag), path: tagURL(tag) }
     })
 }
