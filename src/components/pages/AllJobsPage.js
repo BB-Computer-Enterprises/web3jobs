@@ -4,14 +4,13 @@ import { isEmpty } from "../../util";
 import JobsList from "../JobsList";
 
 
-const AllJobsPage = passedInJobs => {
+const AllJobsPage = () => {
     const [jobs, setJobs] = useState([]);
     const [errorText, setError] = useState("");
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        if (isEmpty(passedInJobs)) fetchJobs().catch(console.error);
-        else setJobs(passedInJobs);
+        fetchJobs().catch(console.error);
     }, []);
 
     // function to pull the data from the DB

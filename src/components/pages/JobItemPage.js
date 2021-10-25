@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
     COMPANY_APPLICATION_URL,
@@ -10,8 +9,6 @@ import {
 } from "../../lib/constants";
 
 const JobItemPage = job => {
-    const [isLoading, setIsLoading] = useState(true);
-
     const {
         location: {
             state: {
@@ -30,17 +27,9 @@ const JobItemPage = job => {
     return (
         <div>
             <div className={"w-screen fixed flex flex-col min-h-screen bg-gray-50"}>
-                <header
-                    className={
-                        "flex justify-between items-center px-4 h-16 bg-gray-900"
-                    }
-                >
-                    <span
-                        className={
-                            "text-2xl sm:text-4xl text-white border-b font-sans"
-                        }
-                    > Job Title:{`${jTitle}`}
-                       
+                <header className={"flex justify-between items-center px-4 h-16 bg-gray-900"}>
+                    <span className={"text-2xl sm:text-4xl text-white border-b font-sans"}>
+                        Job Title:{`${jTitle}`}
                     </span>
                 </header>
                 <p>

@@ -16,9 +16,6 @@ function generateRoutes(){
     })
 }
 
-console.log('Routes: ', generateRoutes())
-
-
 function App() {
     return (
         <Router>
@@ -28,7 +25,7 @@ function App() {
                 {generateRoutes()}
             </Switch>
 
-            {/* <Footer /> */}
+            <Footer />
         </Router>
     );
 }
