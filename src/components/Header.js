@@ -68,9 +68,8 @@ const resources = [
 
 const linkData = [
     { linkText: 'Home', path: '/' },
-    { linkText: 'About', path: `${ABOUT_URL}` },
+    // { linkText: 'About', path: `${ABOUT_URL}` },
     { linkText: 'Companies', path: `${COMPANIES_URL}` },
-    { linkText: 'Post A Job', path: `${POST_A_JOB_URL}` },
     { linkText: 'Jobs', path: `${JOBS_URL}` }
 ]
 
@@ -111,14 +110,8 @@ export default function Header() {
                 <div className="hidden md:flex-1 md:flex md:items-center md:justify-between">
                     <Popover.Group as="nav" className="flex space-x-10">
                         {generateLinks()}
-                        <a href="#" className="text-base font-medium text-gray-500 hover:text-white">
-                            Pricing
-                        </a>
-                        <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">
-                            Docs
-                        </a>
 
-                        <Popover className="relative">
+                        {/* <Popover className="relative">
                             {({ open }) => (
                                 <>
                                     <Popover.Button
@@ -161,18 +154,12 @@ export default function Header() {
                                     </Transition>
                                 </>
                             )}
-                        </Popover>
+                        </Popover> */}
                     </Popover.Group>
                     <div className="flex items-center md:ml-12">
-                        <a href="#" className="text-base font-medium text-gray-500 hover:text-white">
-                            Sign in
-                        </a>
-                        <a
-                            href="#"
-                            className="ml-8 inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
-                        >
-                            Sign up
-                        </a>
+                        <Link to={POST_A_JOB_URL}>
+                            <p className="ml-8 inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">Post A Job</p>
+                        </Link>
                     </div>
                 </div>
             </div>
