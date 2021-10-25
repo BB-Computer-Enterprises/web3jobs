@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { getAllCompaniesInAlphabetic } from "../lib/db";
+import { getAllCompaniesInAlphabetic } from "../../lib/db";
 import {
     COMPANIES_URL,
     COMPANY_DESCRIPTION,
     COMPANY_ID,
     COMPANY_NAME
-} from "../lib/constants";
-import { makeFriendlyUrl } from "../util/sanitize";
+} from "../../lib/constants";
+import { makeFriendlyUrl } from "../../util/sanitize";
 
-const Companies = () => {
+const AllCompaniesPage = () => {
     const [companies, setCompanies] = useState([]);
     const [errorText, setError] = useState("");
     const [isLoading, setIsLoading] = useState(true);
@@ -77,4 +77,4 @@ const Companies = () => {
     );
 }
 
-export default Companies;
+export default AllCompaniesPage;

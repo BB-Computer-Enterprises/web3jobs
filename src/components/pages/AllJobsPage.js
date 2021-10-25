@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import { getAllJobsAndCompaniesInReverseDate } from "../lib/db";
-import { isEmpty } from "../util";
-import JobsList from "./JobsList";
+import { getAllJobsAndCompaniesInReverseDate } from "../../lib/db";
+import { isEmpty } from "../../util";
+import JobsList from "../JobsList";
 
 
-const AllJobs = passedInJobs => {
+const AllJobsPage = passedInJobs => {
     const [jobs, setJobs] = useState([]);
     const [errorText, setError] = useState("");
     const [isLoading, setIsLoading] = useState(true);
@@ -53,4 +53,4 @@ const AllJobs = passedInJobs => {
     );
 }
 
-export default AllJobs;
+export default AllJobsPage;

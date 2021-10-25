@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import { Formik, Form, useField } from 'formik';
 import * as Yup from 'yup';
-import { supabase } from "../lib/api";
-import { isLocal } from "../util/local";
 
 const MyTextInput = ({ label, ...props }) => {
     // useField() returns [formik.getFieldProps(), formik.getFieldMeta()]
@@ -20,7 +18,7 @@ const MyTextInput = ({ label, ...props }) => {
     );
 };
 
-const PostAJob = () => {
+const PostAJobPage = () => {
 
     const formikForm = () => {
         return (
@@ -108,4 +106,4 @@ const PostAJob = () => {
     );
 };
 
-export default PostAJob;
+export default PostAJobPage;

@@ -7,9 +7,9 @@ import {
     JOBS_URL,
     JOB_DESCRIPTION,
     JOB_TITLE
-} from "../lib/constants";
+} from "../../lib/constants";
 
-const JobPage = job => {
+const JobItemPage = job => {
     const [isLoading, setIsLoading] = useState(true);
 
     const {
@@ -58,4 +58,4 @@ const JobPage = job => {
     );
 };
 
-export default JobPage;
+export default JobItemPage;
