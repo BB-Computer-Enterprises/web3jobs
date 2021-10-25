@@ -14,11 +14,12 @@ import {
 import { ChevronDownIcon } from '@heroicons/react/solid'
 import { Link } from 'react-router-dom'
 import {
-    ABOUT_URL,
+    HOME_LINK,
+    COMPANIES_LINK,
+    JOBS_LINK,
+    POST_JOB_LINK,
     COMPANIES_URL,
-    COMPANY_PAGE_URL,
     JOBS_URL,
-    JOB_PAGE_URL,
     POST_A_JOB_URL
 } from "@constants/";
 import {genLinks, genLink} from '@util/';
@@ -68,10 +69,10 @@ const resources = [
 ]
 
 const linkData = [
-    { linkText: 'Home', path: '/' },
+    { linkText: HOME_LINK, path: '/' },
     // { linkText: 'About', path: `${ABOUT_URL}` },
-    { linkText: 'Companies', path: `${COMPANIES_URL}` },
-    { linkText: 'Jobs', path: `${JOBS_URL}` }
+    { linkText: COMPANIES_LINK, path: COMPANIES_URL },
+    { linkText: JOBS_LINK, path: JOBS_URL }
 ]
 const linkStyle = "text-base font-medium text-gray-500 hover:text-white";
 
@@ -150,7 +151,7 @@ export default function Header() {
                     </Popover.Group>
                     <div className="flex items-center md:ml-12">
                         {genLink(
-                            'Post A Job',
+                            POST_JOB_LINK,
                             POST_A_JOB_URL,
                             "ml-8 inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
                         )}
