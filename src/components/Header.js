@@ -21,6 +21,7 @@ import {
     JOB_PAGE_URL,
     POST_A_JOB_URL
 } from "@constants/";
+import {genLinks, genLink} from '@util/';
 
 const solutions = [
     {
@@ -72,19 +73,10 @@ const linkData = [
     { linkText: 'Companies', path: `${COMPANIES_URL}` },
     { linkText: 'Jobs', path: `${JOBS_URL}` }
 ]
+const linkStyle = "text-base font-medium text-gray-500 hover:text-white";
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
-}
-
-function generateLinks() {
-    return linkData.map(data => {
-        return (
-            <Link to={data.path} key={data.linkText}>
-                <p className="text-base font-medium text-gray-500 hover:text-white">{data.linkText}</p>
-            </Link>
-        );
-    });
 }
 
 export default function Header() {
@@ -109,7 +101,7 @@ export default function Header() {
                 </div>
                 <div className="hidden md:flex-1 md:flex md:items-center md:justify-between">
                     <Popover.Group as="nav" className="flex space-x-10">
-                        {generateLinks()}
+                        {genLinks(linkData, linkStyle)}
 
                         {/* <Popover className="relative">
                             {({ open }) => (
@@ -157,9 +149,11 @@ export default function Header() {
                         </Popover> */}
                     </Popover.Group>
                     <div className="flex items-center md:ml-12">
-                        <Link to={POST_A_JOB_URL}>
-                            <p className="ml-8 inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">Post A Job</p>
-                        </Link>
+                        {genLink(
+                            'Post A Job',
+                            POST_A_JOB_URL,
+                            "ml-8 inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+                        )}
                     </div>
                 </div>
             </div>
