@@ -16,9 +16,6 @@ function generateRoutes(){
     })
 }
 
-console.log('Routes: ', generateRoutes())
-
-
 function App() {
     return (
         <Router>
