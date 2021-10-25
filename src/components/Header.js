@@ -82,7 +82,7 @@ function generateLinks() {
     return linkData.map(data => {
         return (
             <Link to={data.path} key={data.linkText}>
-                <p className="text-base font-medium text-gray-500 hover:text-gray-900">{data.linkText}</p>
+                <p className="text-base font-medium text-gray-500 hover:text-white">{data.linkText}</p>
             </Link>
         );
     });
@@ -90,7 +90,7 @@ function generateLinks() {
 
 export default function Header() {
     return (
-        <Popover className="relative bg-white">
+        <Popover className="relative bg-gray-900">
             <div className="flex justify-between items-center px-4 py-6 sm:px-6 md:justify-start md:space-x-10">
                 <div>
                     <a href="#" className="flex">
@@ -103,7 +103,7 @@ export default function Header() {
                     </a>
                 </div>
                 <div className="-mr-2 -my-2 md:hidden">
-                    <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                    <Popover.Button className="bg-gray-900 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
                         <span className="sr-only">Open menu</span>
                         <MenuIcon className="h-6 w-6" aria-hidden="true" />
                     </Popover.Button>
@@ -111,7 +111,7 @@ export default function Header() {
                 <div className="hidden md:flex-1 md:flex md:items-center md:justify-between">
                     <Popover.Group as="nav" className="flex space-x-10">
                         {generateLinks()}
-                        <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">
+                        <a href="#" className="text-base font-medium text-gray-500 hover:text-white">
                             Pricing
                         </a>
                         <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">
@@ -124,14 +124,14 @@ export default function Header() {
                                     <Popover.Button
                                         className={classNames(
                                             open ? 'text-gray-900' : 'text-gray-500',
-                                            'group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+                                            'group bg-gray-900 rounded-md inline-flex items-center text-base font-medium hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
                                         )}
                                     >
                                         <span>More</span>
                                         <ChevronDownIcon
                                             className={classNames(
                                                 open ? 'text-gray-600' : 'text-gray-400',
-                                                'ml-2 h-5 w-5 group-hover:text-gray-500'
+                                                'ml-2 h-5 w-5 group-hover:text-white'
                                             )}
                                             aria-hidden="true"
                                         />
@@ -164,7 +164,7 @@ export default function Header() {
                         </Popover>
                     </Popover.Group>
                     <div className="flex items-center md:ml-12">
-                        <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">
+                        <a href="#" className="text-base font-medium text-gray-500 hover:text-white">
                             Sign in
                         </a>
                         <a
