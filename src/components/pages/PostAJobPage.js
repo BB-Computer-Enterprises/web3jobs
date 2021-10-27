@@ -67,15 +67,15 @@ const PostAJobPage = () => {
         >{formik =>
         (
             <div className="dark:bg-gray-700">
-                <div className="container mx-auto sm:px-6 lg:px-8 py-12">
+                <div className="container mx-auto sm:px-6 lg:px-8 p-8 lg:py-20 lg:px-52">
                     <form className="space-y-8 divide-y divide-gray-200" onSubmit={formik.handleSubmit}>
                         <div className="space-y-8 divide-y divide-gray-200">
                             <div>
                                 <div>
-                                    <h3 className="text-5xl leading-6 font-medium dark:text-white text-gray-900">Profile</h3>
-                                    {/* <p className="mt-1 text-sm text-gray-500">
-                                This information will be displayed publicly so be careful what you share.
-                            </p> */}
+                                    <h3 className="text-5xl leading-tight font-medium dark:text-white text-gray-900">The first step to your next hire 👇</h3>
+                                    <p className="mt-6 text-3xl dark:text-white text-gray-500">
+                                        It will only take 2 minutes ⏳
+                                    </p>
                                 </div>
 
                                 <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
