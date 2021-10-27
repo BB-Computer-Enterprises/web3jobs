@@ -19,31 +19,53 @@ const MyTextInput = ({ label, ...props }) => {
 };
 
 const PostAJobPage = () => {
-    const formik = useFormik({
-        initialValues: {
-            contactEmail: '',
-            companyName: '',
-            jobTitle: '',
-            description: '',
-            applicationURL: '',
-        },
-        validationSchema: {
-            contactEmail: Yup.string().email('Invalid email address').required('Required'),
-            companyName: Yup.string().required('Company name Required'),
-            jobTitle: Yup.string().required('Job title Required'),
-            description: Yup.string().min(20, 'That\'s a pretty short description, dont you think 🤔?').required('Description Required'),
-            applicationURL: Yup.string().required('Application URL Required'),
-        },
-        onSubmit: (values, { setSubmitting }) => {
-            setTimeout(() => {
-                alert(JSON.stringify(values, null, 2));
-                setSubmitting(false);
-            }, 400);
-        }
-    });
+    // const formik = useFormik({
+    //     initialValues: {
+    //         contactEmail: '',
+    //         companyName: '',
+    //         jobTitle: '',
+    //         description: '',
+    //         applicationURL: '',
+    //     },
+    //     validationSchema: {
+    //         contactEmail: Yup.string().email('Invalid email address').required('Required'),
+    //         companyName: Yup.string().required('Company name Required'),
+    //         jobTitle: Yup.string().required('Job title Required'),
+    //         description: Yup.string().min(20, 'That\'s a pretty short description, dont you think 🤔?').required('Description Required'),
+    //         applicationURL: Yup.string().required('Application URL Required'),
+    //     },
+    //     onSubmit: (values, { setSubmitting }) => {
+    //         setTimeout(() => {
+    //             alert(JSON.stringify(values, null, 2));
+    //             setSubmitting(false);
+    //         }, 400);
+    //     }
+    // });
 
-    const form = () => {
-        return (
+    return (
+        <Formik
+            initialValues={{
+                contactEmail: '',
+                companyName: '',
+                jobTitle: '',
+                description: '',
+                applicationURL: '',
+            }}
+            validationSchema={Yup.object({
+                contactEmail: Yup.string().email('Invalid email address').required('Required'),
+                companyName: Yup.string().required('Company name Required'),
+                jobTitle: Yup.string().required('Job title Required'),
+                description: Yup.string().min(20, 'That\'s a pretty short description, dont you think 🤔?').required('Description Required'),
+                applicationURL: Yup.string().required('Application URL Required'),
+            })}
+            onSubmit={(values, { setSubmitting }) => {
+                setTimeout(() => {
+                    alert(JSON.stringify(values, null, 2));
+                    setSubmitting(false);
+                }, 400);
+            }}
+        >{formik =>
+        (<div className="container mx-auto sm:px-6 lg:px-8">
             <form className="space-y-8 divide-y divide-gray-200" onSubmit={formik.handleSubmit}>
                 <div className="space-y-8 divide-y divide-gray-200">
                     <div>
@@ -161,7 +183,7 @@ const PostAJobPage = () => {
                                         name="first-name"
                                         id="first-name"
                                         autoComplete="given-name"
-                                        className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                                        className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-lg border-gray-300 rounded-md"
                                     />
                                 </div>
                             </div>
@@ -186,14 +208,30 @@ const PostAJobPage = () => {
                                     Email address
                                 </label>
                                 <div className="mt-1">
+
+
+
+
+
+                                    {/* 
+                                    *** BRIAN THIS IS THE SHIT I CHANGED FOR THE TAILWINDS FORM 👇
+                                    */}
                                     <input
                                         id="email"
                                         name="email"
                                         type="email"
                                         autoComplete="email"
-                                        className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                                        className="shadow-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                                        {...formik.getFieldProps('contactEmail')}
                                     />
                                 </div>
+                                {formik.touched.contactEmail && formik.errors.contactEmail ? (
+                                    <div>{formik.errors.contactEmail}</div>
+                                ) : null}
+
+                                {/* 
+                                    *** BRIAN THIS IS THE SHIT I CHANGED FOR THE TAILWINDS FORM 👆
+                                    */}
                             </div>
 
                             <div className="sm:col-span-3">
@@ -399,12 +437,14 @@ const PostAJobPage = () => {
                     </div>
                 </div>
             </form>
-        )
-    }
+        </div>)}
+        </Formik>
+    )
+}
 
-    return (
-        <div className="container mx-auto sm:px-6 lg:px-8">{form(formik)}</div>
-    );
-};
+// return (
+//     <div className="container mx-auto sm:px-6 lg:px-8">{form(formik)}</div>
+// );
+// };
 
 export default PostAJobPage;
