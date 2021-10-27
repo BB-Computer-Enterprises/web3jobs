@@ -3,7 +3,7 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { CheckIcon } from '@heroicons/react/outline'
 
-const hobbyFeatures = ['Pariatur quod similique', 'Sapiente libero doloribus', 'Vel ipsa esse repudiandae']
+const freeFeatures = ['Job listed on the site', 'Sapiente libero doloribus']
 const scaleFeatures = ['Pariatur quod similique', 'Sapiente libero doloribus', 'Vel ipsa esse repudiandae']
 const growthFeatures = [
     'Quia rem est sed impedit magnam',
@@ -22,21 +22,16 @@ const paymentOptions = () => {
                         <div className="flex-1 flex flex-col">
                             <div className="bg-white px-6 py-10">
                                 <div>
-                                    <h3 className="text-center text-2xl font-medium text-gray-900" id="tier-hobby">
-                                        Hobby
-                                    </h3>
                                     <div className="mt-4 flex items-center justify-center">
                                         <span className="px-3 flex items-start text-6xl tracking-tight text-gray-900">
-                                            <span className="mt-2 mr-2 text-4xl font-medium">$</span>
-                                            <span className="font-extrabold">79</span>
+                                            <span className="font-extrabold">Free!</span>
                                         </span>
-                                        <span className="text-xl font-medium text-gray-500">/month</span>
                                     </div>
                                 </div>
                             </div>
                             <div className="flex-1 flex flex-col justify-between border-t-2 border-gray-100 p-6 bg-gray-50 sm:p-10 lg:p-6 xl:p-10">
                                 <ul className="space-y-4">
-                                    {hobbyFeatures.map((feature) => (
+                                    {freeFeatures.map((feature) => (
                                         <li key={feature} className="flex items-start">
                                             <div className="flex-shrink-0">
                                                 <CheckIcon className="flex-shrink-0 h-6 w-6 text-green-500" aria-hidden="true" />
@@ -52,7 +47,7 @@ const paymentOptions = () => {
                                             className="block w-full text-center rounded-lg border border-transparent bg-white px-6 py-3 text-base font-medium text-indigo-600 hover:bg-gray-50"
                                             aria-describedby="tier-hobby"
                                         >
-                                            Start your trial
+                                            Select
                                         </a>
                                     </div>
                                 </div>
@@ -73,28 +68,27 @@ const paymentOptions = () => {
                                 </span>
                             </div>
                         </div>
-                        <div className="bg-white rounded-t-lg px-6 pt-12 pb-10">
+                        <div className="bg-green-200 bg-opacity-85 rounded-t-lg px-6 pt-12 pb-10">
                             <div>
-                                <h3 className="text-center text-3xl font-semibold text-gray-900 sm:-mx-6" id="tier-growth">
+                                {/* <h3 className="text-center text-3xl font-semibold text-gray-900 sm:-mx-6" id="tier-growth">
                                     Growth
-                                </h3>
+                                </h3> */}
                                 <div className="mt-4 flex items-center justify-center">
                                     <span className="px-3 flex items-start text-6xl tracking-tight text-gray-900 sm:text-6xl">
                                         <span className="mt-2 mr-2 text-4xl font-medium">$</span>
-                                        <span className="font-extrabold">149</span>
+                                        <span className="font-extrabold">299</span>
                                     </span>
-                                    <span className="text-2xl font-medium text-gray-500">/month</span>
                                 </div>
                             </div>
                         </div>
-                        <div className="border-t-2 border-gray-100 rounded-b-lg pt-10 pb-8 px-6 bg-gray-50 sm:px-10 sm:py-10">
+                        <div className="rounded-b-lg pt-10 pb-8 px-6 bg-green-300 sm:px-10 sm:py-10">
                             <ul className="space-y-4">
                                 {growthFeatures.map((feature) => (
                                     <li key={feature} className="flex items-start">
                                         <div className="flex-shrink-0">
                                             <CheckIcon className="flex-shrink-0 h-6 w-6 text-green-500" aria-hidden="true" />
                                         </div>
-                                        <p className="ml-3 text-base font-medium text-gray-500">{feature}</p>
+                                        <p className="ml-3 text-base font-medium text-black-500">{feature}</p>
                                     </li>
                                 ))}
                             </ul>
@@ -105,7 +99,12 @@ const paymentOptions = () => {
                                         className="block w-full text-center rounded-lg border border-transparent bg-indigo-600 px-6 py-4 text-xl leading-6 font-medium text-white hover:bg-indigo-700"
                                         aria-describedby="tier-growth"
                                     >
-                                        Start your trial
+                                        <div className="flex items-start">
+                                            <div className="flex-shrink-0">
+                                                <CheckIcon className="flex-shrink-0 lg:h-10 h-8 w-10 text-green-500" aria-hidden="true" />
+                                            </div>
+                                            <p className="lg:text-3xl text-2xl text-center flex-grow font-medium dark:text-white text-white">Selected</p>
+                                        </div>
                                     </a>
                                 </div>
                             </div>
@@ -323,10 +322,5 @@ const PostAJobPage = () => {
 
     )
 }
-
-// return (
-//     <div className="container mx-auto sm:px-6 lg:px-8">{form(formik)}</div>
-// );
-// };
 
 export default PostAJobPage;
