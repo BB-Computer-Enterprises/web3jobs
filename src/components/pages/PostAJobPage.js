@@ -1,20 +1,28 @@
-// import { useState, useEffect } from "react";
+// import { useLayoutEffect } from "react";
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { CheckIcon } from '@heroicons/react/outline'
 
-const freeFeatures = ['Job listed on the site', 'Sapiente libero doloribus']
-const scaleFeatures = ['abc', 'Sapiente libero doloribus', 'Vel ipsa esse repudiandae']
-const growthFeatures = [
+const freeFeatures = [
+    'Job listed on the site',
+    'Company added to the site'
+];
+
+const mostPopular = [
     '👈 Everything in free',
     'Job featured for 1️⃣ week',
-    'Primo real estate in our newsletter 👀',
+    'Primo real estate in 1️⃣ newsletter 👀',
     'Company featured for 1️⃣ week!',
-]
+];
+
+const spencyFeatures = [
+    '👈 Everything here for 4️⃣ weeks!!',
+    'Podcast 🎙 && post on our blog 💪'
+];
 
 const paymentOptions = () => {
     return (
-        <div className="sm:col-span-6">
+        <div className="sm:col-span-6 lg:py-5">
             <div className="relative lg:grid lg:grid-cols-7">
                 <div className="mx-auto max-w-md lg:mx-0 lg:max-w-none lg:col-start-1 lg:col-end-3 lg:row-start-2 lg:row-end-3">
                     <div className="h-full flex flex-col rounded-lg shadow-lg overflow-hidden lg:rounded-none lg:rounded-l-lg">
@@ -23,7 +31,7 @@ const paymentOptions = () => {
                                 <div>
                                     <div className="mt-4 flex items-center justify-center">
                                         <span className="px-3 flex items-start text-5xl tracking-tight text-gray-900">
-                                            <span className="font-extrabold">Free!</span>
+                                            <span className="font-extrabold lg:text-6xl">Free!</span>
                                         </span>
                                     </div>
                                 </div>
@@ -72,14 +80,14 @@ const paymentOptions = () => {
                                 <div className="mt-4 flex items-center justify-center">
                                     <span className="px-3 flex items-start tracking-tight text-gray-900 sm:text-6xl">
                                         <span className="mt-2 mr-2 text-4xl font-medium">$</span>
-                                        <span className="text-7xl font-extrabold">299</span>
+                                        <span className="text-7xl lg:text-9xl font-extrabold">299</span>
                                     </span>
                                 </div>
                             </div>
                         </div>
                         <div className="rounded-b-lg pt-10 pb-8 px-6 bg-green-300 sm:px-10 sm:py-10">
                             <ul className="space-y-4">
-                                {growthFeatures.map((feature) => (
+                                {mostPopular.map((feature) => (
                                     <li key={feature} className="flex items-start">
                                         <div className="flex-shrink-0">
                                             <CheckIcon className="flex-shrink-0 h-6 w-6 text-green-500" aria-hidden="true" />
@@ -112,21 +120,17 @@ const paymentOptions = () => {
                         <div className="flex-1 flex flex-col">
                             <div className="bg-white px-6 py-10">
                                 <div>
-                                    <h3 className="text-center text-2xl font-medium text-gray-900" id="tier-scale">
-                                        Scale
-                                    </h3>
                                     <div className="mt-4 flex items-center justify-center">
-                                        <span className="px-3 flex items-start text-6xl tracking-tight text-gray-900">
+                                        <span className="px-3 flex items-start text-5xl tracking-tight text-gray-900">
                                             <span className="mt-2 mr-2 text-4xl font-medium">$</span>
-                                            <span className="font-extrabold">349</span>
+                                            <span className="lg:text-6xl font-extrabold">499</span>
                                         </span>
-                                        <span className="text-xl font-medium text-gray-500">/month</span>
                                     </div>
                                 </div>
                             </div>
                             <div className="flex-1 flex flex-col justify-between border-t-2 border-gray-100 p-6 bg-gray-50 sm:p-10 lg:p-6 xl:p-10">
                                 <ul className="space-y-4">
-                                    {scaleFeatures.map((feature) => (
+                                    {spencyFeatures.map((feature) => (
                                         <li key={feature} className="flex items-start">
                                             <div className="flex-shrink-0">
                                                 <CheckIcon className="flex-shrink-0 h-6 w-6 text-green-500" aria-hidden="true" />
@@ -142,7 +146,7 @@ const paymentOptions = () => {
                                             className="block w-full text-center rounded-lg border border-transparent bg-white px-6 py-3 text-base font-medium text-indigo-600 hover:bg-gray-50"
                                             aria-describedby="tier-scale"
                                         >
-                                            Start your trial
+                                            Select
                                         </a>
                                     </div>
                                 </div>
