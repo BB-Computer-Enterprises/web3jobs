@@ -282,7 +282,7 @@ const PostAJobPage = () => {
                                             Apply URL (or email)
                                         </label>
                                         <div className="mt-1 flex rounded-md shadow-sm">
-                                            <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm">
+                                            <span className="inline-flex items-center px-3 rounded-l-md md:text-xl border border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm">
                                                 https://
                                             </span>
                                             <input
@@ -303,13 +303,13 @@ const PostAJobPage = () => {
                             </div>
                         </div>
 
-                        <div className="pt-5">
-                            <div className="flex">
+                        <div>
+                            <div className="block ">
                                 <button
                                     type="submit"
-                                    className="flex-1 lg:flex-none justify-center lg:h-35 py-2 px-4 border border-transparent shadow-sm text-lg font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                    className="block w-full lg:w-3/5 lg:h-20 lg:text-4xl lg:justify-center md:text-3xl justify-center py-2 px-4 border border-transparent shadow-sm text-lg font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                                 >
-                                    Post that Job!
+                                    Post that Job 🚀!
                                 </button>
                             </div>
                         </div>
