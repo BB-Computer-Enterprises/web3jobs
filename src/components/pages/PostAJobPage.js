@@ -71,29 +71,31 @@ const PostAJobPage = () => {
                     <form className="space-y-8 divide-y divide-gray-200" onSubmit={formik.handleSubmit}>
                         <div className="space-y-8 divide-y divide-gray-200">
                             <div>
-                                <div>
-                                    <h3 className="text-5xl leading-tight font-medium dark:text-white text-gray-900">The first step to your next hire 👇</h3>
-                                    <p className="mt-6 text-3xl dark:text-white text-gray-500">
+                                <div className="pb-8">
+                                    <h3 className="text-5xl lg:text-6xl leading-tight font-medium dark:text-white text-gray-900">The first step to your next hire 👇</h3>
+                                    <p className="mt-6 text-2xl lg:text-3xl dark:text-white text-gray-500">
                                         It will only take 2 minutes ⏳
                                     </p>
                                 </div>
 
                                 <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
                                     <div className="sm:col-span-4">
-                                        <label htmlFor="username" className="block text-sm font-medium text-gray-700">
-                                            Username
+                                        <label htmlFor="contactEmail" className="block text-lg font-medium dark:text-white text-gray-700">
+                                            Company Email
                                         </label>
                                         <div className="mt-1 flex rounded-md shadow-sm">
-                                            <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm">
-                                                workcation.com/
-                                            </span>
                                             <input
-                                                type="text"
-                                                name="username"
-                                                id="username"
-                                                autoComplete="username"
-                                                className="flex-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300"
+                                                id="email"
+                                                name="email"
+                                                type="email"
+                                                autoComplete="email"
+                                                className="flex-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full min-w-0 rounded-none rounded-md sm:text-sm border-gray-300"
+                                                {...formik.getFieldProps('contactEmail')}
                                             />
+                                            {/* TODO: Update the error UI */}
+                                        {formik.touched.contactEmail && formik.errors.contactEmail ? (
+                                            <div>{formik.errors.contactEmail}</div>
+                                        ) : null}
                                         </div>
                                     </div>
 
