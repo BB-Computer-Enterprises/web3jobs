@@ -187,7 +187,7 @@ const PostAJobPage = () => {
         (
             <div className="dark:bg-gray-700">
                 <div className="container mx-auto sm:px-6 lg:px-8 p-8 lg:py-20 lg:px-52">
-                    <form className="space-y-8 divide-y divide-gray-200" onSubmit={formik.handleSubmit}>
+                    <form className="space-y-8" onSubmit={formik.handleSubmit}>
                         <div className="space-y-8">
                             <div>
                                 <div className="pb-8">
