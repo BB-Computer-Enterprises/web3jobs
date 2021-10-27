@@ -48,7 +48,7 @@ const paymentOptions = () => {
                                 <div className="mt-8">
                                     <div className="rounded-lg shadow-md">
                                         <a
-                                            href="#"
+                                            href="/"
                                             className="block w-full text-center rounded-lg border border-transparent bg-white px-6 py-3 text-base font-medium text-indigo-600 hover:bg-gray-50"
                                             aria-describedby="tier-hobby"
                                         >
@@ -101,7 +101,7 @@ const paymentOptions = () => {
                             <div className="mt-10">
                                 <div className="rounded-lg shadow-md">
                                     <a
-                                        href="#"
+                                        href="/"
                                         className="block w-full text-center rounded-lg border border-transparent bg-indigo-600 px-6 py-4 text-xl leading-6 font-medium text-white hover:bg-indigo-700"
                                         aria-describedby="tier-growth"
                                     >
@@ -143,7 +143,7 @@ const paymentOptions = () => {
                                 <div className="mt-8">
                                     <div className="rounded-lg shadow-md">
                                         <a
-                                            href="#"
+                                            href="/"
                                             className="block w-full text-center rounded-lg border border-transparent bg-white px-6 py-3 text-base font-medium text-indigo-600 hover:bg-gray-50"
                                             aria-describedby="tier-scale"
                                         >
@@ -199,7 +199,7 @@ const PostAJobPage = () => {
 
                                 <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
                                     <div className="sm:col-span-6">
-                                        <label htmlFor="contactEmail" className="block text-lg font-medium dark:text-white text-gray-700">
+                                        <label htmlFor="contactEmail" className="pb-1 lg:pb-3 block text-lg lg:text-3xl md:text-2xl font-medium dark:text-white text-gray-700">
                                             Company Email
                                         </label>
                                         <div className="mt-1 flex rounded-md shadow-sm">
@@ -208,7 +208,7 @@ const PostAJobPage = () => {
                                                 name="contactEmail"
                                                 type="email"
                                                 autoComplete="email"
-                                                className="flex-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full min-w-0 rounded-none rounded-md sm:text-sm border-gray-300"
+                                                className="lg:h-14 md:h-12 flex-1 focus:ring-indigo-500 md:text-xl focus:border-indigo-500 block w-full min-w-0 rounded-none rounded-md sm:text-sm border-gray-300"
                                                 {...formik.getFieldProps('contactEmail')}
                                             />
                                             {/* TODO: Update the error UI */}
@@ -218,7 +218,7 @@ const PostAJobPage = () => {
                                         </div>
                                     </div>
                                     <div className="sm:col-span-6">
-                                        <label htmlFor="contactEmail" className="block text-lg font-medium dark:text-white text-gray-700">
+                                        <label htmlFor="contactEmail" className="pb-1 lg:pb-3 block text-lg lg:text-3xl md:text-2xl font-medium dark:text-white text-gray-700">
                                             Company Name
                                         </label>
                                         <div className="mt-1 flex rounded-md shadow-sm">
@@ -227,7 +227,7 @@ const PostAJobPage = () => {
                                                 name="companyName"
                                                 type="text"
                                                 autoComplete="organization"
-                                                className="flex-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full min-w-0 rounded-none rounded-md sm:text-sm border-gray-300"
+                                                className="lg:h-14 md:h-12 flex-1 focus:ring-indigo-500 md:text-xl focus:border-indigo-500 block w-full min-w-0 rounded-none rounded-md sm:text-sm border-gray-300"
                                                 {...formik.getFieldProps('companyName')}
                                             />
                                             {/* TODO: Update the error UI */}
@@ -237,7 +237,7 @@ const PostAJobPage = () => {
                                         </div>
                                     </div>
                                     <div className="sm:col-span-6">
-                                        <label htmlFor="contactEmail" className="block text-lg font-medium dark:text-white text-gray-700">
+                                        <label htmlFor="contactEmail" className="pb-1 lg:pb-3 block text-lg lg:text-3xl md:text-2xl font-medium dark:text-white text-gray-700">
                                             Job Title
                                         </label>
                                         <div className="mt-1 flex rounded-md shadow-sm">
@@ -246,7 +246,7 @@ const PostAJobPage = () => {
                                                 name="jobTitle"
                                                 type="text"
                                                 placeholder="i.e. Senior Solidity Engineer"
-                                                className="flex-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full min-w-0 rounded-none rounded-md sm:text-sm border-gray-300"
+                                                className="lg:h-14 md:h-12 flex-1 focus:ring-indigo-500 md:text-xl focus:border-indigo-500 block w-full min-w-0 rounded-none rounded-md sm:text-sm border-gray-300"
                                                 {...formik.getFieldProps('jobTitle')}
                                             />
                                             {/* TODO: Update the error UI */}
@@ -259,7 +259,7 @@ const PostAJobPage = () => {
                                     {paymentOptions()}
 
                                     <div className="sm:col-span-6">
-                                        <label htmlFor="description" className="block text-lg font-medium dark:text-white text-gray-700">
+                                        <label htmlFor="description" className="pb-1 lg:pb-3 block text-lg lg:text-3xl md:text-2xl font-medium dark:text-white text-gray-700">
                                             Job Description
                                         </label>
                                         <div className="mt-1 flex rounded-md shadow-sm">
@@ -268,7 +268,7 @@ const PostAJobPage = () => {
                                                 name="description"
                                                 rows={15}
                                                 placeholder="Describe the role - please use markdown formatting 🤙"
-                                                className="flex-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full min-w-0 rounded-none rounded-md sm:text-sm border-gray-300"
+                                                className="flex-1 focus:ring-indigo-500 focus:border-indigo-500 md:text-xl block w-full min-w-0 rounded-none rounded-md sm:text-sm border-gray-300"
                                                 {...formik.getFieldProps('description')}
                                             />
                                             {/* TODO: Update the error UI */}
@@ -278,7 +278,7 @@ const PostAJobPage = () => {
                                         </div>
                                     </div>
                                     <div className="sm:col-span-6">
-                                        <label htmlFor="application url" className="block text-lg font-medium dark:text-white text-gray-700">
+                                        <label htmlFor="application url" className="pb-1 lg:pb-3 block text-lg lg:text-3xl md:text-2xl font-medium dark:text-white text-gray-700">
                                             Apply URL (or email)
                                         </label>
                                         <div className="mt-1 flex rounded-md shadow-sm">
@@ -290,7 +290,7 @@ const PostAJobPage = () => {
                                                 name="applicationURL"
                                                 type="text"
                                                 placeholder="i.e. company.com/careers/apply"
-                                                className="flex-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300"
+                                                className="lg:h-14 md:h-12 flex-1 focus:ring-indigo-500 md:text-xl focus:border-indigo-500 block w-full min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300"
                                                 {...formik.getFieldProps('applicationURL')}
                                             />
                                             {/* TODO: Update the error UI */}
@@ -307,7 +307,7 @@ const PostAJobPage = () => {
                             <div className="flex">
                                 <button
                                     type="submit"
-                                    className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                    className="flex-1 lg:flex-none justify-center lg:h-35 py-2 px-4 border border-transparent shadow-sm text-lg font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                                 >
                                     Post that Job!
                                 </button>
