@@ -2,6 +2,7 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { CheckIcon } from '@heroicons/react/outline'
+import { MailIcon } from '@heroicons/react/solid'
 
 const freeFeatures = [
     'Job listed on the site',
@@ -201,7 +202,10 @@ const PostAJobPage = () => {
                                         <label htmlFor="contactEmail" className="pb-1 lg:pb-3 block text-lg lg:text-3xl md:text-2xl font-medium dark:text-white text-gray-700">
                                             Company Email
                                         </label>
-                                        <div className="mt-1 flex rounded-md shadow-sm">
+                                        <div className="mt-1 relative  rounded-md shadow-sm">
+                                            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                                <MailIcon className="h-7 w-7 text-gray-400" aria-hidden="true" />
+                                            </div>
                                             <input
                                                 id="contactEmail"
                                                 name="contactEmail"
