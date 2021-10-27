@@ -4,13 +4,12 @@ import * as Yup from 'yup';
 import { CheckIcon } from '@heroicons/react/outline'
 
 const freeFeatures = ['Job listed on the site', 'Sapiente libero doloribus']
-const scaleFeatures = ['Pariatur quod similique', 'Sapiente libero doloribus', 'Vel ipsa esse repudiandae']
+const scaleFeatures = ['abc', 'Sapiente libero doloribus', 'Vel ipsa esse repudiandae']
 const growthFeatures = [
-    'Quia rem est sed impedit magnam',
-    'Dolorem vero ratione voluptates',
-    'Qui sed ab doloribus voluptatem dolore',
-    'Laborum commodi molestiae id et fugiat',
-    'Nam ut ipsa nesciunt culpa modi dolor',
+    '👈 Everything in free',
+    'Job featured for 1️⃣ week',
+    'Primo real estate in our newsletter 👀',
+    'Company featured for 1️⃣ week!',
 ]
 
 const paymentOptions = () => {
@@ -23,7 +22,7 @@ const paymentOptions = () => {
                             <div className="bg-white px-6 py-10">
                                 <div>
                                     <div className="mt-4 flex items-center justify-center">
-                                        <span className="px-3 flex items-start text-6xl tracking-tight text-gray-900">
+                                        <span className="px-3 flex items-start text-5xl tracking-tight text-gray-900">
                                             <span className="font-extrabold">Free!</span>
                                         </span>
                                     </div>
@@ -70,13 +69,10 @@ const paymentOptions = () => {
                         </div>
                         <div className="bg-green-200 bg-opacity-85 rounded-t-lg px-6 pt-12 pb-10">
                             <div>
-                                {/* <h3 className="text-center text-3xl font-semibold text-gray-900 sm:-mx-6" id="tier-growth">
-                                    Growth
-                                </h3> */}
                                 <div className="mt-4 flex items-center justify-center">
-                                    <span className="px-3 flex items-start text-6xl tracking-tight text-gray-900 sm:text-6xl">
+                                    <span className="px-3 flex items-start tracking-tight text-gray-900 sm:text-6xl">
                                         <span className="mt-2 mr-2 text-4xl font-medium">$</span>
-                                        <span className="font-extrabold">299</span>
+                                        <span className="text-7xl font-extrabold">299</span>
                                     </span>
                                 </div>
                             </div>
@@ -88,7 +84,7 @@ const paymentOptions = () => {
                                         <div className="flex-shrink-0">
                                             <CheckIcon className="flex-shrink-0 h-6 w-6 text-green-500" aria-hidden="true" />
                                         </div>
-                                        <p className="ml-3 text-base font-medium text-black-500">{feature}</p>
+                                        <p className="ml-3 text-base text-lg lg:text-xl font-medium text-black-500">{feature}</p>
                                     </li>
                                 ))}
                             </ul>
