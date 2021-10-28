@@ -39,7 +39,7 @@ const AllCompaniesPage = () => {
     const getContent = () => {
         return (
             <div>
-                <div className={`p-2 flex-grow grid gap-2 ${companies.length ? "auto-rows-min" : ""} grid-cols-1 h-2/3 overflow-y-scroll first:mt-8`} >
+                <div className={`p-2 flex-grow grid gap-2 ${companies.length ? "auto-rows-min" : ""} grid-cols-1 h-2/3 first:mt-8`} >
                     {companies.length ? (
                         companies.map(company => (
                             <div className="bg-white px-4 py-5 border-b border-gray-200 sm:px-6" key={company[COMPANY_ID]} >
