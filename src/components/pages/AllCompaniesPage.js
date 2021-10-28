@@ -7,8 +7,8 @@ import {
     COMPANY_DESCRIPTION,
     COMPANY_ID,
     COMPANY_NAME,
-    COMPANY_PAGE_SUBTITLE, 
-    COMPANY_PAGE_TITLE
+    COMPANIES_PAGE_SUBTITLE, 
+    COMPANIES_PAGE_TITLE
 } from "@constants/";
 import { makeFriendlyUrl } from "@util/sanitize";
 
@@ -70,7 +70,7 @@ const AllCompaniesPage = () => {
     }
 
     return (
-        PageContainer(getContent(), COMPANY_PAGE_TITLE, COMPANY_PAGE_SUBTITLE)
+        PageContainer(getContent(), COMPANIES_PAGE_TITLE, COMPANIES_PAGE_SUBTITLE)
     );
 }
 
