@@ -42,3 +42,7 @@ export const HOME_LINK = 'Home'
 export const COMPANIES_LINK = 'Companies'
 export const JOBS_LINK = 'Jobs'
 export const POST_JOB_LINK = 'Post A Job'
+
+// Page titles and subtitles
+export const COMPANY_PAGE_TITLE = 'Web 3.0 Companies'
+export const COMPANY_PAGE_SUBTITLE = 'Subtitle text is cool shittttttttt'
