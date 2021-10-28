@@ -1,7 +1,7 @@
 // import { useLayoutEffect } from "react";
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { CheckIcon } from '@heroicons/react/outline'
+import { CheckIcon, ExclamationCircleIcon } from '@heroicons/react/outline'
 import { MailIcon } from '@heroicons/react/solid'
 
 const freeFeatures = [
@@ -167,15 +167,16 @@ const PostAJobPage = () => {
                 contactEmail: '',
                 companyName: '',
                 jobTitle: '',
+                priceSelection: '',
                 description: '',
                 applicationURL: '',
             }}
             validationSchema={Yup.object({
-                contactEmail: Yup.string().email('Invalid email address').required('Required'),
-                companyName: Yup.string().required('Company name Required'),
-                jobTitle: Yup.string().required('Job title Required'),
-                description: Yup.string().min(20, 'That\'s a pretty short description, dont you think 🤔?').required('Description Required'),
-                applicationURL: Yup.string().required('Application URL Required'),
+                contactEmail: Yup.string().email('👆 Invalid 📧 address').required('👆 Email Required'),
+                companyName: Yup.string().required('👆 Company name Required'),
+                jobTitle: Yup.string().required('👆 Job title Required'),
+                description: Yup.string().min(20, 'That\'s a pretty short description, dont you think 🤔?').required('👆 Description Required'),
+                applicationURL: Yup.string().required('👆 Application URL Required'),
             })}
             onSubmit={(values, { setSubmitting }) => {
                 setTimeout(() => {
@@ -185,7 +186,7 @@ const PostAJobPage = () => {
             }}
         >{formik =>
         (
-            <div className="dark:bg-gray-700">
+            <div className="dark:bg-gray-800">
                 <div className="container mx-auto sm:px-6 lg:px-8 p-8 lg:py-20 lg:px-52">
                     <form className="space-y-8" onSubmit={formik.handleSubmit}>
                         <div className="space-y-8">
@@ -202,7 +203,7 @@ const PostAJobPage = () => {
                                         <label htmlFor="contactEmail" className="pb-1 lg:pb-3 block text-lg lg:text-3xl md:text-2xl font-medium dark:text-white text-gray-700">
                                             Company Email
                                         </label>
-                                        <div className="mt-1 relative  rounded-md shadow-sm">
+                                        <div className="mt-1 relative rounded-md shadow-sm">
                                             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                                 <MailIcon className="h-7 w-7 text-gray-400" aria-hidden="true" />
                                             </div>
@@ -211,52 +212,72 @@ const PostAJobPage = () => {
                                                 name="contactEmail"
                                                 type="email"
                                                 autoComplete="email"
-                                                className="lg:h-14 md:h-12 flex-1 focus:ring-indigo-500 md:text-xl focus:border-indigo-500 block w-full min-w-0 rounded-none rounded-md sm:text-sm border-gray-300"
+                                                className={`${formik.touched.contactEmail && formik.errors.contactEmail ? "border-4 border-red-500" : ""} lg:h-14 md:h-12 flex-1 pl-10 lg:pl-12 focus:ring-indigo-500 md:text-xl focus:border-indigo-500 block w-full min-w-0 rounded-none rounded-md sm:text-sm border-gray-300`}
+                                                aria-invalid="true"
+                                                aria-describedby="email-error"
                                                 {...formik.getFieldProps('contactEmail')}
                                             />
-                                            {/* TODO: Update the error UI */}
                                             {formik.touched.contactEmail && formik.errors.contactEmail ? (
-                                                <div>{formik.errors.contactEmail}</div>
+                                                <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                                                    <ExclamationCircleIcon className="h-5 w-5 lg:h-7 lg:w-7 text-red-500" aria-hidden="true" />
+                                                </div>
                                             ) : null}
                                         </div>
+                                        {formik.touched.contactEmail && formik.errors.contactEmail ? (
+                                            <p className="mt-2 text-lg text-white" id="email-error">
+                                                {formik.errors.contactEmail}
+                                            </p>
+                                        ) : null}
                                     </div>
                                     <div className="sm:col-span-6">
-                                        <label htmlFor="contactEmail" className="pb-1 lg:pb-3 block text-lg lg:text-3xl md:text-2xl font-medium dark:text-white text-gray-700">
+                                        <label htmlFor="companyName" className="pb-1 lg:pb-3 block text-lg lg:text-3xl md:text-2xl font-medium dark:text-white text-gray-700">
                                             Company Name
                                         </label>
-                                        <div className="mt-1 flex rounded-md shadow-sm">
+                                        <div className="mt-1 relative rounded-md shadow-sm">
                                             <input
                                                 id="companyName"
                                                 name="companyName"
                                                 type="text"
                                                 autoComplete="organization"
-                                                className="lg:h-14 md:h-12 flex-1 focus:ring-indigo-500 md:text-xl focus:border-indigo-500 block w-full min-w-0 rounded-none rounded-md sm:text-sm border-gray-300"
+                                                className={`${formik.touched.companyName && formik.errors.companyName ? "border-4 border-red-500" : ""}lg:h-14 md:h-12 flex-1 focus:ring-indigo-500 md:text-xl focus:border-indigo-500 block w-full min-w-0 rounded-none rounded-md sm:text-sm border-gray-300`}
                                                 {...formik.getFieldProps('companyName')}
                                             />
-                                            {/* TODO: Update the error UI */}
                                             {formik.touched.companyName && formik.errors.companyName ? (
-                                                <div>{formik.errors.companyName}</div>
+                                                <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                                                    <ExclamationCircleIcon className="h-5 w-5 lg:h-7 lg:w-7 text-red-500" aria-hidden="true" />
+                                                </div>
                                             ) : null}
                                         </div>
+                                        {formik.touched.companyName && formik.errors.companyName ? (
+                                            <p className="mt-2 text-lg text-white" id="email-error">
+                                                {formik.errors.companyName}
+                                            </p>
+                                        ) : null}
                                     </div>
                                     <div className="sm:col-span-6">
-                                        <label htmlFor="contactEmail" className="pb-1 lg:pb-3 block text-lg lg:text-3xl md:text-2xl font-medium dark:text-white text-gray-700">
+                                        <label htmlFor="jobTitle" className="pb-1 lg:pb-3 block text-lg lg:text-3xl md:text-2xl font-medium dark:text-white text-gray-700">
                                             Job Title
                                         </label>
-                                        <div className="mt-1 flex rounded-md shadow-sm">
+                                        <div className="mt-1 relative rounded-md shadow-sm">
                                             <input
                                                 id="jobTitle"
                                                 name="jobTitle"
                                                 type="text"
                                                 placeholder="i.e. Senior Solidity Engineer"
-                                                className="lg:h-14 md:h-12 flex-1 focus:ring-indigo-500 md:text-xl focus:border-indigo-500 block w-full min-w-0 rounded-none rounded-md sm:text-sm border-gray-300"
+                                                className={`${formik.touched.jobTitle && formik.errors.jobTitle ? "border-4 border-red-500" : ""}lg:h-14 md:h-12 flex-1 focus:ring-indigo-500 md:text-xl focus:border-indigo-500 block w-full min-w-0 rounded-none rounded-md sm:text-sm border-gray-300`}
                                                 {...formik.getFieldProps('jobTitle')}
                                             />
-                                            {/* TODO: Update the error UI */}
                                             {formik.touched.jobTitle && formik.errors.jobTitle ? (
-                                                <div>{formik.errors.jobTitle}</div>
+                                                <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                                                    <ExclamationCircleIcon className="h-5 w-5 lg:h-7 lg:w-7 text-red-500" aria-hidden="true" />
+                                                </div>
                                             ) : null}
                                         </div>
+                                        {formik.touched.jobTitle && formik.errors.jobTitle ? (
+                                            <p className="mt-2 text-lg text-white" id="email-error">
+                                                {formik.errors.jobTitle}
+                                            </p>
+                                        ) : null}
                                     </div>
 
                                     {paymentOptions()}
@@ -265,20 +286,26 @@ const PostAJobPage = () => {
                                         <label htmlFor="description" className="pb-1 lg:pb-3 block text-lg lg:text-3xl md:text-2xl font-medium dark:text-white text-gray-700">
                                             Job Description
                                         </label>
-                                        <div className="mt-1 flex rounded-md shadow-sm">
+                                        <div className="mt-1 relative rounded-md shadow-sm">
                                             <textarea
                                                 id="description"
                                                 name="description"
                                                 rows={15}
                                                 placeholder="Describe the role - please use markdown formatting 🤙"
-                                                className="flex-1 focus:ring-indigo-500 focus:border-indigo-500 md:text-xl block w-full min-w-0 rounded-none rounded-md sm:text-sm border-gray-300"
+                                                className={`${formik.touched.description && formik.errors.description ? "border-4 border-red-500" : ""}flex-1 focus:ring-indigo-500 focus:border-indigo-500 md:text-xl block w-full min-w-0 rounded-none rounded-md sm:text-sm border-gray-300`}
                                                 {...formik.getFieldProps('description')}
                                             />
-                                            {/* TODO: Update the error UI */}
                                             {formik.touched.description && formik.errors.description ? (
-                                                <div>{formik.errors.description}</div>
+                                                <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                                                    <ExclamationCircleIcon className="h-5 w-5 lg:h-7 lg:w-7 text-red-500" aria-hidden="true" />
+                                                </div>
                                             ) : null}
                                         </div>
+                                        {formik.touched.description && formik.errors.description ? (
+                                            <p className="mt-2 text-lg text-white" id="email-error">
+                                                {formik.errors.description}
+                                            </p>
+                                        ) : null}
                                     </div>
                                     <div className="sm:col-span-6">
                                         <label htmlFor="application url" className="pb-1 lg:pb-3 block text-lg lg:text-3xl md:text-2xl font-medium dark:text-white text-gray-700">
@@ -293,14 +320,20 @@ const PostAJobPage = () => {
                                                 name="applicationURL"
                                                 type="text"
                                                 placeholder="i.e. company.com/careers/apply"
-                                                className="lg:h-14 md:h-12 flex-1 focus:ring-indigo-500 md:text-xl focus:border-indigo-500 block w-full min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300"
+                                                className={`${formik.touched.applicationURL && formik.errors.applicationURL ? "border-t-4 border-l-4 border-b-4 border-red-500" : ""}lg:h-14 md:h-12 flex-1 focus:ring-indigo-500 md:text-xl focus:border-indigo-500 block w-full min-w-0 rounded-none  sm:text-sm border-gray-300`}
                                                 {...formik.getFieldProps('applicationURL')}
                                             />
-                                            {/* TODO: Update the error UI */}
                                             {formik.touched.applicationURL && formik.errors.applicationURL ? (
-                                                <div>{formik.errors.applicationURL}</div>
+                                                <span className="inline-flex items-center px-3 rounded-r-md md:text-xl border border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm">
+                                                    <ExclamationCircleIcon className="h-5 w-5 lg:h-7 lg:w-7 text-red-500" aria-hidden="true" />
+                                                </span>
                                             ) : null}
                                         </div>
+                                        {formik.touched.applicationURL && formik.errors.applicationURL ? (
+                                            <p className="mt-2 text-lg text-white" id="email-error">
+                                                {formik.errors.applicationURL}
+                                            </p>
+                                        ) : null}
                                     </div>
                                 </div>
                             </div>
