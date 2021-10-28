@@ -1,8 +1,14 @@
-// import { useLayoutEffect } from "react";
+import { useState, useEffect } from "react";
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { CheckIcon, ExclamationCircleIcon } from '@heroicons/react/outline'
-import { MailIcon } from '@heroicons/react/solid'
+import { CheckIcon, ExclamationCircleIcon } from '@heroicons/react/outline';
+import { MailIcon } from '@heroicons/react/solid';
+
+import {
+    TIER_FREE,
+    TIER_POPULAR,
+    TIER_SPENCY
+} from "@constants/";
 
 const freeFeatures = [
     'Job listed on the site',
@@ -21,7 +27,23 @@ const spencyFeatures = [
     'Podcast 🎙 && post on our blog 💪'
 ];
 
-const paymentOptions = () => {
+const buttonStyles = {
+    notSelected: "block w-full text-center rounded-lg border border-transparent bg-white px-6 py-3 text-base font-medium text-indigo-600 hover:bg-gray-50",
+    selected: "block w-full text-center rounded-lg border border-transparent bg-indigo-600 px-6 py-4 text-xl leading-6 font-medium text-white hover:bg-indigo-700",
+}
+
+const selectedButton = () => {
+    return (
+        <div className="flex items-start">
+            <div className="flex-shrink-0">
+                <CheckIcon className="flex-shrink-0 lg:h-10 h-8 w-10 text-green-500" aria-hidden="true" />
+            </div>
+            <p className="lg:text-3xl text-2xl text-center flex-grow font-medium dark:text-white text-white">Selected</p>
+        </div>
+    );
+}
+
+const paymentOptions = formik => {
     return (
         <div className="sm:col-span-6 lg:py-5">
             <div className="relative lg:grid lg:grid-cols-7">
@@ -50,13 +72,13 @@ const paymentOptions = () => {
                                 </ul>
                                 <div className="mt-8">
                                     <div className="rounded-lg shadow-md">
-                                        <a
-                                            href="/"
-                                            className="block w-full text-center rounded-lg border border-transparent bg-white px-6 py-3 text-base font-medium text-indigo-600 hover:bg-gray-50"
+                                        <button
+                                            className={`${formik.values.priceSelection === TIER_FREE ? buttonStyles.selected : buttonStyles.notSelected}`}
                                             aria-describedby="tier-hobby"
+                                            onClick={() => updatePriceTier(formik.setFieldValue, TIER_FREE)}
                                         >
-                                            Select
-                                        </a>
+                                            {formik.values.priceSelection === TIER_FREE ? selectedButton() : "Select"}
+                                        </button >
                                     </div>
                                 </div>
                             </div>
@@ -99,18 +121,13 @@ const paymentOptions = () => {
                             </ul>
                             <div className="mt-10">
                                 <div className="rounded-lg shadow-md">
-                                    <a
-                                        href="/"
-                                        className="block w-full text-center rounded-lg border border-transparent bg-indigo-600 px-6 py-4 text-xl leading-6 font-medium text-white hover:bg-indigo-700"
-                                        aria-describedby="tier-growth"
+                                    <button
+                                        className={`${formik.values.priceSelection === TIER_POPULAR ? buttonStyles.selected : buttonStyles.notSelected}`}
+                                        aria-describedby="tier-hobby"
+                                        onClick={() => updatePriceTier(formik.setFieldValue, TIER_POPULAR)}
                                     >
-                                        <div className="flex items-start">
-                                            <div className="flex-shrink-0">
-                                                <CheckIcon className="flex-shrink-0 lg:h-10 h-8 w-10 text-green-500" aria-hidden="true" />
-                                            </div>
-                                            <p className="lg:text-3xl text-2xl text-center flex-grow font-medium dark:text-white text-white">Selected</p>
-                                        </div>
-                                    </a>
+                                        {formik.values.priceSelection === TIER_POPULAR ? selectedButton() : "Select"}
+                                    </button >
                                 </div>
                             </div>
                         </div>
@@ -142,13 +159,13 @@ const paymentOptions = () => {
                                 </ul>
                                 <div className="mt-8">
                                     <div className="rounded-lg shadow-md">
-                                        <a
-                                            href="/"
-                                            className="block w-full text-center rounded-lg border border-transparent bg-white px-6 py-3 text-base font-medium text-indigo-600 hover:bg-gray-50"
-                                            aria-describedby="tier-scale"
+                                        <button
+                                            className={`${formik.values.priceSelection === TIER_SPENCY ? buttonStyles.selected : buttonStyles.notSelected}`}
+                                            aria-describedby="tier-hobby"
+                                            onClick={() => updatePriceTier(formik.setFieldValue, TIER_SPENCY)}
                                         >
-                                            Select
-                                        </a>
+                                            {formik.values.priceSelection === TIER_SPENCY ? selectedButton() : "Select"}
+                                        </button >
                                     </div>
                                 </div>
                             </div>
@@ -160,14 +177,27 @@ const paymentOptions = () => {
     )
 }
 
+const updatePriceTier = (setFieldValue, value) => {
+    console.log('here')
+    setFieldValue("priceSelection", value);
+}
+
 const PostAJobPage = () => {
+    // const [priceSelected, setPriceSelected] = useState(TIER_POPULAR);
+
+    // useEffect(() => {
+    //     getJobs().catch(console.error);
+    // }, []);
+
+
+
     return (
         <Formik
             initialValues={{
                 contactEmail: '',
                 companyName: '',
                 jobTitle: '',
-                priceSelection: '',
+                priceSelection: TIER_POPULAR,
                 description: '',
                 applicationURL: '',
             }}
@@ -280,7 +310,7 @@ const PostAJobPage = () => {
                                         ) : null}
                                     </div>
 
-                                    {paymentOptions()}
+                                    {paymentOptions(formik)}
 
                                     <div className="sm:col-span-6">
                                         <label htmlFor="description" className="pb-1 lg:pb-3 block text-lg lg:text-3xl md:text-2xl font-medium dark:text-white text-gray-700">

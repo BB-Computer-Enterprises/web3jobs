@@ -48,3 +48,8 @@ export const COMPANIES_PAGE_TITLE = 'Web 3.0 Companies'
 export const COMPANIES_PAGE_SUBTITLE = 'Subtitle text is cool shittttttttt'
 export const ALL_JOBS_PAGE_TITLE = 'Web 3.0 Jobs'
 export const ALL_JOBS_PAGE_SUBTITLE = 'Jobs Subtitle text is cool shittttttttt'
+
+// Price tier
+export const TIER_FREE = 'freeTier';
+export const TIER_POPULAR = 'popularTier';
+export const TIER_SPENCY = 'spencyTier';
