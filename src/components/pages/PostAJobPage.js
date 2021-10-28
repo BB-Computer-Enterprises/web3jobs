@@ -237,10 +237,10 @@ const popOver = (show, setShow) => {
 }
 
 const PostAJobPage = () => {
-    const [show, setShow] = useState(true)
+    const [show, setShow] = useState(false)
 
     const putDataIntoDB = async jobData => {
-        let { data: error } = await postAJob(jobData)
+        const { data: job, error } = await postAJob(jobData)
         if(!error) setShow(true)
     }
 
@@ -261,7 +261,7 @@ const PostAJobPage = () => {
                 description: Yup.string().min(20, 'That\'s a pretty short description, dont you think 🤔?').required('👆 Description Required'),
                 applicationURL: Yup.string().required('👆 Application URL Required'),
             })}
-            onSubmit={async (values, { setSubmitting, resetForm }) => {
+            onSubmit={async (values, {resetForm }) => {
                 putDataIntoDB(values)
                 resetForm()
             }}
