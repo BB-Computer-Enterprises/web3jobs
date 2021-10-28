@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import { CheckIcon, ExclamationCircleIcon } from '@heroicons/react/outline';
 import { MailIcon } from '@heroicons/react/solid';
 
+import { postAJob } from "@db/";
 import {
     TIER_FREE,
     TIER_POPULAR,
@@ -183,13 +184,18 @@ const updatePriceTier = (setFieldValue, value) => {
 }
 
 const PostAJobPage = () => {
-    // const [priceSelected, setPriceSelected] = useState(TIER_POPULAR);
+    const [isSubmitting, setSubmitting] = useState(false);
 
     // useEffect(() => {
-    //     getJobs().catch(console.error);
+    //     // getJobs().catch(console.error);
+    //     console.log('submitting:')
     // }, []);
 
-
+    const putDataIntoDB = async jobData => {
+        setSubmitting(true);
+        let { data: jobs, error } = await postAJob(jobData)
+        return jobs;
+    }
 
     return (
         <Formik
@@ -208,11 +214,15 @@ const PostAJobPage = () => {
                 description: Yup.string().min(20, 'That\'s a pretty short description, dont you think 🤔?').required('👆 Description Required'),
                 applicationURL: Yup.string().required('👆 Application URL Required'),
             })}
-            onSubmit={(values, { setSubmitting }) => {
-                setTimeout(() => {
-                    alert(JSON.stringify(values, null, 2));
-                    setSubmitting(false);
-                }, 400);
+            onSubmit={async (values, { setSubmitting }) => {
+                console.log('Submit Values: ', values)
+                const jobs = putDataIntoDB(values)
+                setSubmitting(false);
+
+                // setTimeout(() => {
+                //     alert(JSON.stringify(values, null, 2));
+                //     setSubmitting(false);
+                // }, 400);
             }}
         >{formik =>
         (
