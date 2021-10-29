@@ -47,6 +47,7 @@ export const JOB_PAGE_URL = `${JOBS_URL}/:jtitle-:cname/:jid`
 export const JOB_TAG_URL = `${JOBS_URL}/:jtag-jobs`
 export const POST_A_JOB_URL = '/post-web3-job'
 export const ABOUT_URL = '/about-web3-jobs'
+export const PRIVACY_URL = '/privacy'
 
 // Nav Bar Link Text
 export const HOME_LINK = 'Home'

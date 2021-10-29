@@ -5,7 +5,8 @@ import {
     JOBS_URL,
     JOB_PAGE_URL,
     POST_A_JOB_URL,
-    JOB_TAG_URL
+    JOB_TAG_URL,
+    PRIVACY_URL
 } from "@constants/";
 import {
     AboutPage,
@@ -15,10 +16,15 @@ import {
     HomePage,
     NotFoundPage,
     PostAJobPage,
-    JobItemPage
+    JobItemPage,
+    Privacy,
 } from '@pages/'
 
 const routes = [
+    {
+        path: `${PRIVACY_URL}`,
+        component: Privacy
+    },
     {
         path: `${ABOUT_URL}`,
         component: AboutPage

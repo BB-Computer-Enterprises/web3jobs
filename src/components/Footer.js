@@ -94,7 +94,7 @@ const navigation = {
         { name: 'Blog', href: 'https://blog.web3jobs.biz' },
     ],
     legal: [
-        { name: 'Privacy', href: '#' },
+        { name: 'Privacy', href: '/privacy' },
         { name: 'Terms', href: '#' },
     ],
     social: [

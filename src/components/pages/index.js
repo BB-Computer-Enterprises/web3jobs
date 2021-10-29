@@ -6,3 +6,4 @@ export { default as HomePage } from './HomePage';
 export { default as NotFoundPage } from './NotFoundPage';
 export { default as PostAJobPage } from './PostAJobPage';
 export { default as JobItemPage } from './JobItemPage';
+export { default as Privacy } from './Privacy';
