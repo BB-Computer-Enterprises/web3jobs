@@ -3,7 +3,7 @@ import PageContainer from "../PageContainer";
 export default function Privacy() {
     const getContent = () => {
         return (
-            <div className="relative py-16 bg-white overflow-hidden">
+            <div className="relative py-16 bg-gray-light drop-shadow-2xl text-white overflow-hidden">
                 <div className="hidden lg:block lg:absolute lg:inset-y-0 lg:h-full lg:w-full">
                     <div className="relative h-full text-lg max-w-prose mx-auto" aria-hidden="true">
                         <svg
@@ -74,13 +74,16 @@ export default function Privacy() {
                 <div className="relative px-4 sm:px-6 lg:px-8">
                     <div className="text-lg max-w-prose mx-auto">
                         <h1>
-                            <span className="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase">
-                                Introducing
-                            </span>
-                            <span className="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                                JavaScript for Beginners
+                            <span className="mt-2 block text-6xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                                Privacy Policy
                             </span>
                         </h1>
+                        <h2>
+                            <span className="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                                LAST UPDATED: 29th October 2021
+                            </span>
+
+                        </h2>
                         <p className="mt-8 text-xl text-gray-500 leading-8">
                             Aliquet nec orci mattis amet quisque ullamcorper neque, nibh sem. At arcu, sit dui mi, nibh dui, diam eget
                             aliquam. Quisque id at vitae feugiat egestas ac. Diam nulla orci at in viverra scelerisque eget. Eleifend
@@ -145,10 +148,10 @@ export default function Privacy() {
                     </div>
                 </div>
             </div>
-        )        
+        )
     }
 
-    return(
+    return (
         PageContainer(getContent(), "Privacy Policy")
     )
 
