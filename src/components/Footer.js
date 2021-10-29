@@ -87,9 +87,7 @@ const innerHTMLDiv = (sectionItems) => {
 const navigation = {
     support: [
         { name: 'Pricing', href: '#' },
-        { name: 'Documentation', href: '#' },
         { name: 'Guides', href: '#' },
-        { name: 'API Status', href: '#' },
     ],
     company: [
         { name: 'About', href: '#' },
@@ -172,15 +170,30 @@ export default function Footer() {
                     </div>
                 </div>
                 <div className="mt-8 border-t border-gray-700 pt-8 md:flex md:items-center md:justify-between">
-                    <div className="flex space-x-6 md:order-2">
+                    <div className="flex space-x-6">
                         {navigation.social.map((item) => (
                             <a key={item.name} href={item.href} className="text-gray-400 hover:text-gray-300">
                                 <span className="sr-only">{item.name}</span>
-                                <item.icon className="h-6 w-6" aria-hidden="true" />
+                                <item.icon className="h-6 w-6 hover:text-indigo-700" aria-hidden="true" />
+                            </a>
+                        ))}
+                        {navigation.support.map((item) => (
+                            <a key={item.name} href={item.href}>
+                                <span className="text-white hover:text-indigo-700">{item.name}</span>
+                            </a>
+                        ))}
+                        {navigation.company.map((item) => (
+                            <a key={item.name} href={item.href}>
+                                <span className="text-white hover:text-indigo-700">{item.name}</span>
+                            </a>
+                        ))}
+                        {navigation.legal.map((item) => (
+                            <a key={item.name} href={item.href}>
+                                <span className="text-white hover:text-indigo-700">{item.name}</span>
                             </a>
                         ))}
                     </div>
-                    <p className="mt-8 text-base text-gray-400 md:mt-0 md:order-1">
+                    <p className="mt-8 text-base md:mt-0 md:order-1">
                         &copy; 2021 BB Computer Enterprises LLC. All rights reserved.
                     </p>
                 </div>
