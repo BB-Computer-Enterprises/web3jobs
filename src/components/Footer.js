@@ -141,34 +141,6 @@ export default function Footer() {
     return (
         <footer className="bg-gray-dark" aria-labelledby="footer-heading">
             <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 text-white">
-                <div className="pb-8 xl:grid">
-                    <div className="grid grid-cols-2 gap-8 xl:col-span-4">
-                        <div className="md:grid md:grid-cols-2 md:gap-8">
-                            <div>
-                                <ul className="mt-4 space-y-4">
-                                    {tags.length ? genTags(tags)[0] : 'Loading Tags'}
-                                </ul>
-                            </div>
-                            <div className="mt-12 md:mt-0">
-                                <ul className="mt-4 space-y-4">
-                                    {tags.length ? genTags(tags)[1] : 'Loading Tags'}
-                                </ul>
-                            </div>
-                        </div>
-                        <div className="md:grid md:grid-cols-2 md:gap-8">
-                            <div>
-                                <ul className="mt-4 space-y-4">
-                                    {tags.length ? genTags(tags)[2] : 'Loading Tags'}
-                                </ul>
-                            </div>
-                            <div className="mt-12 md:mt-0">
-                                <ul className="mt-4 space-y-4">
-                                    {tags.length ? genTags(tags)[3] : 'Loading Tags'}
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div className="mt-8 border-t border-gray-700 pt-8 md:flex md:items-center md:justify-between">
                     <div className="flex space-x-6">
                         {navigation.social.map((item) => (
@@ -196,6 +168,34 @@ export default function Footer() {
                     <p className="mt-8 text-base md:mt-0 md:order-1">
                         &copy; 2021 BB Computer Enterprises LLC. All rights reserved.
                     </p>
+                </div>
+                <div className="pt-8 xl:grid">
+                    <div className="grid grid-cols-2 gap-8 xl:col-span-4">
+                        <div className="md:grid md:grid-cols-2 md:gap-8">
+                            <div>
+                                <ul className="mt-4 space-y-4">
+                                    {tags.length ? genTags(tags)[0] : 'Loading Tags'}
+                                </ul>
+                            </div>
+                            <div className="mt-12 md:mt-0">
+                                <ul className="mt-4 space-y-4">
+                                    {tags.length ? genTags(tags)[1] : 'Loading Tags'}
+                                </ul>
+                            </div>
+                        </div>
+                        <div className="md:grid md:grid-cols-2 md:gap-8">
+                            <div>
+                                <ul className="mt-4 space-y-4">
+                                    {tags.length ? genTags(tags)[2] : 'Loading Tags'}
+                                </ul>
+                            </div>
+                            <div className="mt-12 md:mt-0">
+                                <ul className="mt-4 space-y-4">
+                                    {tags.length ? genTags(tags)[3] : 'Loading Tags'}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </footer>
