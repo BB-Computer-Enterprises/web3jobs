@@ -49,8 +49,8 @@ const JobsList = ({ jobs, isLoading, tag }) => {
                                     </span>
                                     <div className="flex-1 pl-8 flex items-center justify-between">
                                         <div className="truncate">
-                                            <Link to={{ pathname: generateLinkURL(job), state: { job } }}><h1 className="font-medium text-xl text-indigo-600 truncate">{job[JOB_TITLE]}</h1></Link>
-                                            <p className="ml-1 flex-shrink-0 font-normal text-gray-500 	font-medium"> {companyName(job)}</p>
+                                            <Link to={{ pathname: generateLinkURL(job), state: { job } }}><h1 className="font-medium text-xl text-indigo-600 hover:text-red-500 truncate">{job[JOB_TITLE]}</h1></Link>
+                                            <p className="ml-1 flex-shrink-0 font-normal text-gray-500 font-medium"> {companyName(job)}</p>
                                             <p className="ml-1 flex-shrink-0 font-normal text-gray-500 ">📅 {new Date(job[JOB_DATE_POSTED]).toDateString()}</p>
                                         </div>
                                         <div className="inline-flex space-x-2 hidden lg:block">
