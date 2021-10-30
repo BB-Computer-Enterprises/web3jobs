@@ -33,11 +33,10 @@ const companyName = job => {
 const JobsList = ({ jobs, isLoading, tag }) => {
     return (
         <div className="bg-gray-dark shadow-2xl overflow-hidden sm:rounded-md">
-            <ul className="divide-y divide-gray-200">
                 {jobs.length ? (
                     jobs.map((job) => (
-                        <li key={job[JOB_ID]}>
-                            <Link to={{ pathname: generateLinkURL(job), state: { job } }} className="text-white block hover:bg-gray-light px-8 py-2">
+                        <li key={job[JOB_ID]} className="border-b-2 border-white">
+                            <Link to={{ pathname: generateLinkURL(job), state: { job } }} className="text-white block px-8 py-2 hover:bg-red-800 bg-opacity-95">
                                 <div className="px-4 py-4 flex items-center sm:px-6">
                                     <span className="inline-block relative">
                                         <img
@@ -78,8 +77,6 @@ const JobsList = ({ jobs, isLoading, tag }) => {
                         {isLoading ? 'Loading...' : `There are no ${capitalize(tag)} jobs yet!`}
                     </span>
                 )}
-
-            </ul>
         </div >
 
     );
