@@ -51,24 +51,24 @@ const AllCompaniesPage = () => {
         return (
             companyData.length ? (
                 companyData.map(company => (
-                        <Link to={{ pathname: generateLinkURL(company), state: { company } }} className={`${company[COMPANY_FEATURED] ? featuredStyle : regularStyle} border-b-2 border-white transform transition duration-500 hover:scale-105 hover:text-red-500 hover:bg-red-800 bg-opacity-95 block px-8 py-2`}>
-                            <div className="lg:px-4 py-4 flex items-center">
-                                <span className="inline-block relative">
-                                    <img
-                                        className="inline-block h-12 w-12 rounded-md"
-                                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                        alt=""
-                                    />
-                                    <span className={`${company[COMPANY_FEATURED] ? "animate-ping" : ""} absolute top-0 right-0 block h-2.5 w-2.5 rounded-full ring-2 ring-white bg-green-400`} />
-                                </span>
-                                <div className="flex-1 lg:pl-8 pl-2 flex items-center justify-between">
-                                    <div>
-                                        <h1 className="font-medium text-2xl">{company[COMPANY_NAME]}</h1>
-                                        <p className="text-white lg:ml-1 flex-shrink-0 font-normal overflow-hidden">{company[COMPANY_DESCRIPTION]}</p>
-                                    </div>
+                    <Link key={company[COMPANY_ID]} to={{ pathname: generateLinkURL(company), state: { company } }} className={`${company[COMPANY_FEATURED] ? featuredStyle : regularStyle} border-b-2 border-white transform transition duration-500 hover:scale-105 hover:text-red-500 hover:bg-red-800 bg-opacity-95 block px-8 py-2`}>
+                        <div className="lg:px-4 py-4 flex items-center">
+                            <span className="inline-block relative">
+                                <img
+                                    className="inline-block h-12 w-12 rounded-md"
+                                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                    alt=""
+                                />
+                                <span className={`${company[COMPANY_FEATURED] ? "animate-ping" : ""} absolute top-0 right-0 block h-2.5 w-2.5 rounded-full ring-2 ring-white bg-green-400`} />
+                            </span>
+                            <div className="flex-1 lg:pl-8 pl-2 flex items-center justify-between">
+                                <div>
+                                    <h1 className="font-medium text-2xl">{company[COMPANY_NAME]}</h1>
+                                    <p className="text-white lg:ml-1 flex-shrink-0 font-normal overflow-hidden">{company[COMPANY_DESCRIPTION]}</p>
                                 </div>
                             </div>
-                        </Link>
+                        </div>
+                    </Link>
                 ))
             ) : (
                 <span className={"h-full justify-center items-center"} >
