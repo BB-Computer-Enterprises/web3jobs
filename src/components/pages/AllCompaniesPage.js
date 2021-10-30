@@ -18,7 +18,7 @@ const AllCompaniesPage = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        if(!companies) fetchCompanies().catch(console.error);
+        fetchCompanies().catch(console.error);
     }, []);
 
     const fetchCompanies = async () => {
