@@ -55,13 +55,13 @@ const AllCompaniesPage = () => {
                         <div className="lg:px-4 py-4 flex items-center">
                             <span className="inline-block relative">
                                 <img
-                                    className="inline-block h-12 w-12 rounded-md"
+                                    className="inline-block h-16 w-16 rounded-md"
                                     src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                                     alt=""
                                 />
                                 <span className={`${company[COMPANY_FEATURED] ? "animate-ping" : ""} absolute top-0 right-0 block h-2.5 w-2.5 rounded-full ring-2 ring-white bg-green-400`} />
                             </span>
-                            <div className="flex-1 lg:pl-8 pl-2 flex items-center justify-between">
+                            <div className="flex-1 lg:pl-8 pl-5 flex items-center justify-between">
                                 <div>
                                     <h1 className="font-medium text-2xl">{company[COMPANY_NAME]}</h1>
                                     <p className="text-white lg:ml-1 flex-shrink-0 font-normal overflow-hidden">{company[COMPANY_DESCRIPTION]}</p>
