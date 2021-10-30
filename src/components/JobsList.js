@@ -24,7 +24,7 @@ const generateLinkURL = job => {
 }
 
 const sepratetags = (tags, isFeatured) => {
-    const style = `${isFeatured ? "bg-gray-dark text-white" : "bg-indigo-100 text-indigo-800 "} flex-1 items-center px-3 py-0.5 rounded-full text-sm font-medium `
+    const style = `${isFeatured ? "bg-gray-dark text-white hover:bg-white hover:text-black" : "bg-indigo-100 text-indigo-800 hover:bg-gray-lightest hover:text-white "} flex-1 items-center px-3 py-0.5 rounded-full text-sm font-medium `
     return tags.map(tag => (
         <span className={style}>
             {tag}
@@ -56,7 +56,7 @@ const JobsList = ({ jobs }) => {
                                 {sepratetags(job[JOB_TAGS], company[COMPANY_FEATURED])}
                             </div>
                             <button
-                                className="items-center px-6 py-3 border font-medium rounded-md shadow-2xl text-white bg-indigo-600 hidden lg:block"
+                                className={`${!company[COMPANY_FEATURED] ? "bg-gray-light hover:bg-white hover:text-black" : "hover:bg-indigo-100 hover:text-black border"} items-center px-6 py-3 font-medium rounded-md shadow-2xl text-white bg-indigo-600 hidden lg:block`}
                             >
                                 Apply
                             </button>
