@@ -48,7 +48,6 @@ const AllCompaniesPage = () => {
         return `${COMPANIES_URL}/${makeFriendlyUrl(cName)}`
     }
 
-
     const genCompanies = companyData => {
         return (
             companyData.map(company => (
@@ -76,11 +75,7 @@ const AllCompaniesPage = () => {
                 {genCompanies(featuredCompanies)}
                 {genCompanies(companies)}
                 {!!errorText && (
-                    <div
-                        className={
-                            "border max-w-sm self-center px-4 py-2 mt-4 text-center text-sm bg-red-100 border-red-300 text-red-400"
-                        }
-                    >
+                    <div className={"border max-w-sm self-center px-4 py-2 mt-4 text-center text-sm bg-red-100 border-red-300 text-red-400"}>
                         {errorText}
                     </div>
                 )}
