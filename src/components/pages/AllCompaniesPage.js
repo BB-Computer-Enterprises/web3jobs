@@ -42,7 +42,7 @@ const AllCompaniesPage = () => {
                 {companies.length ? (
                     companies.map(company => (
                         <li key={company[COMPANY_ID]} className="border-b-2 border-white">
-                            <Link to={{ pathname: generateLinkURL(company), state: { company } }} className="text-white block hover:bg-red-800 bg-opacity-95 px-8 py-2">
+                            <Link to={{ pathname: generateLinkURL(company), state: { company } }} className="text-indigo-600 hover:text-red-500 block hover:bg-red-800 bg-opacity-95 px-8 py-2">
                                 <div className="px-4 py-4 flex items-center sm:px-6">
                                     <span className="inline-block relative">
                                         <img
@@ -50,13 +50,13 @@ const AllCompaniesPage = () => {
                                             src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                                             alt=""
                                         />
-                                        <span className="absolute top-0 right-0 block h-2.5 w-2.5 rounded-full ring-2 ring-white bg-green-400" />
+                                        <span className="absolute top-0 right-0 block h-2.5 w-2.5 rounded-full ring-2 ring-white bg-green-400 animate-ping" />
                                     </span>
                                     <div className="flex-1 pl-8 flex items-center justify-between">
                                         <div className="overflow-ellipsis overflow-hidden">
                                             <Link to={{ pathname: generateLinkURL(company), state: { company } }}>
-                                                <h1 className="font-medium text-2xl text-indigo-600 hover:text-red-500 truncate">{company[COMPANY_NAME]}</h1></Link>
-                                            <p className="ml-1 flex-shrink-0 font-normal text-gray-500 overflow-ellipsis overflow-hidden">{company[COMPANY_DESCRIPTION]}</p>
+                                                <h1 className="font-medium text-2xl  truncate">{company[COMPANY_NAME]}</h1></Link>
+                                            <p className="text-white ml-1 flex-shrink-0 font-normal overflow-ellipsis overflow-hidden">{company[COMPANY_DESCRIPTION]}</p>
                                         </div>
                                     </div>
                                 </div>
