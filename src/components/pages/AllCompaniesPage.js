@@ -44,15 +44,14 @@ const AllCompaniesPage = () => {
         return `${COMPANIES_URL}/${makeFriendlyUrl(cName)}`
     }
 
-    const featuredStyle = "bg-featured text-yellow"
-    const regularStyle = "text-indigo-600 text-white"
+    const featuredStyle = "bg-featured";
+    const regularStyle = "text-indigo-600 text-white";
 
     const genCompanies = companyData => {
         return (
             companyData.length ? (
                 companyData.map(company => (
-                    <li key={company[COMPANY_ID]} className={`${company[COMPANY_FEATURED] ? featuredStyle : regularStyle} border-b-2 border-white transform transition duration-500 hover:scale-105 hover:text-red-500 hover:bg-red-800 bg-opacity-95`}>
-                        <Link to={{ pathname: generateLinkURL(company), state: { company } }} className=" block px-8 py-2">
+                        <Link to={{ pathname: generateLinkURL(company), state: { company } }} className={`${company[COMPANY_FEATURED] ? featuredStyle : regularStyle} border-b-2 border-white transform transition duration-500 hover:scale-105 hover:text-red-500 hover:bg-red-800 bg-opacity-95 block px-8 py-2`}>
                             <div className="lg:px-4 py-4 flex items-center">
                                 <span className="inline-block relative">
                                     <img
@@ -62,18 +61,17 @@ const AllCompaniesPage = () => {
                                     />
                                     <span className={`${company[COMPANY_FEATURED] ? "animate-ping" : ""} absolute top-0 right-0 block h-2.5 w-2.5 rounded-full ring-2 ring-white bg-green-400`} />
                                 </span>
-                                <div className="flex-1 pl-8 flex items-center justify-between">
-                                    <div className="overflow-ellipsis overflow-hidden">
-                                        <h1 className="font-medium text-2xl  truncate">{company[COMPANY_NAME]}</h1>
-                                        <p className="text-white ml-1 flex-shrink-0 font-normal overflow-ellipsis overflow-hidden">{company[COMPANY_DESCRIPTION]}</p>
+                                <div className="flex-1 lg:pl-8 pl-2 flex items-center justify-between">
+                                    <div>
+                                        <h1 className="font-medium text-2xl">{company[COMPANY_NAME]}</h1>
+                                        <p className="text-white lg:ml-1 flex-shrink-0 font-normal overflow-hidden">{company[COMPANY_DESCRIPTION]}</p>
                                     </div>
                                 </div>
                             </div>
                         </Link>
-                    </li>
                 ))
             ) : (
-                <span className={"h-full flex justify-center items-center"} >
+                <span className={"h-full justify-center items-center"} >
                     {isLoading ? loading() : 'No companies! 👀'}
                 </span>
             )
