@@ -1,6 +1,7 @@
 
 import { Link } from "react-router-dom";
 import { makeFriendlyUrl } from "@util/sanitize";
+import { daysElapsed } from "@util/daysElapsed";
 import {
     COMPANY_NAME,
     JOBS_URL,
@@ -22,9 +23,10 @@ const generateLinkURL = job => {
     return `${JOBS_URL}/${makeFriendlyUrl(title)}-${makeFriendlyUrl(cName)}/${id}`
 }
 
-const sepratetags = tags => {
+const sepratetags = (tags, isFeatured) => {
+    const style = `${isFeatured ? "bg-gray-dark text-white" : "bg-indigo-100 text-indigo-800 "} flex-1 items-center px-3 py-0.5 rounded-full text-sm font-medium `
     return tags.map(tag => (
-        <span className="flex-1 items-center px-3 py-0.5 rounded-full text-sm font-medium bg-indigo-100 text-indigo-800">
+        <span className={style}>
             {tag}
         </span>
     ))
@@ -35,27 +37,26 @@ const getCompany = job => {
     return companies;
 }
 
-const JobsList = ({ jobs, isLoading, tag }) => {
+const JobsList = ({ jobs }) => {
     return (
         jobs.map(job => {
             const company = getCompany(job);
-            
+
             return (
                 <Link key={job[JOB_ID]} to={{ pathname: generateLinkURL(job), state: { job } }} className={`${company[COMPANY_FEATURED] ? FEATURED_STYLE : REGULAR_STYLE}`}>
-                    <div className="px-4 py-4 flex items-center sm:px-6">
+                    <div className="lg:px-4 py-4 flex items-center">
                         {genListIcon(company[COMPANY_ICON_URL], "", company[COMPANY_FEATURED])}
                         <div className="flex-1 pl-8 flex items-center justify-between">
                             <div>
-                                <Link to={{ pathname: generateLinkURL(job), state: { job } }}><h1 className="font-medium text-xl hover:text-red-500 truncate">{job[JOB_TITLE]}</h1></Link>
-                                <p className="ml-1 flex-shrink-0 font-normal text-gray-500 font-medium"> {company[COMPANY_NAME]}</p>
-                                <p className="ml-1 flex-shrink-0 font-normal text-gray-500 ">📅 {new Date(job[JOB_DATE_POSTED]).toDateString()}</p>
+                                <h1 className="mb-1 font-medium text-2xl lg:text-xl hover:text-red-500 truncate">{job[JOB_TITLE]}</h1>
+                                <p className="mb-1 flex-shrink-0 font-normal text-white font-medium">{company[COMPANY_NAME]}</p>
+                                <p className="flex-shrink-0 font-normal text-white ">📅 Posted {daysElapsed(job[JOB_DATE_POSTED])} days ago</p>
                             </div>
                             <div className="inline-flex space-x-2 hidden lg:block">
-                                {sepratetags(job[JOB_TAGS])}
+                                {sepratetags(job[JOB_TAGS], company[COMPANY_FEATURED])}
                             </div>
                             <button
-                                type="button"
-                                className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 hidden lg:block"
+                                className="items-center px-6 py-3 border font-medium rounded-md shadow-2xl text-white bg-indigo-600 hidden lg:block"
                             >
                                 Apply
                             </button>
