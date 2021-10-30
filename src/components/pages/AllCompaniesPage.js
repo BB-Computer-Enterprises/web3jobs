@@ -36,13 +36,29 @@ const AllCompaniesPage = () => {
         return `${COMPANIES_URL}/${makeFriendlyUrl(cName)}`
     }
 
+    const hoverScale = element => {
+        return (
+            <section class="text-gray-700 body-font">
+                <div class="container px-5 py-24 mx-auto">
+                    <div class="flex flex-wrap -m-4 text-center">
+                        <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+                            <div class="border-2 border-gray-600 px-4 py-6 rounded-lg transform transition duration-500 hover:scale-110">
+                                <p class="leading-relaxed">Downloads</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        )
+    }
+
     const getContent = () => {
         return (
             <div className="bg-gray-dark shadow-2xl overflow-hidden sm:rounded-md">
                 {companies.length ? (
                     companies.map(company => (
-                        <li key={company[COMPANY_ID]} className="border-b-2 border-white">
-                            <Link to={{ pathname: generateLinkURL(company), state: { company } }} className="text-indigo-600 hover:text-red-500 block hover:bg-red-800 bg-opacity-95 px-8 py-2">
+                        <li key={company[COMPANY_ID]} className="border-b-2 border-white transform transition duration-500 hover:scale-105 text-indigo-600 hover:text-red-500 hover:bg-red-800 bg-opacity-95">
+                            <Link to={{ pathname: generateLinkURL(company), state: { company } }} className=" block  px-8 py-2">
                                 <div className="px-4 py-4 flex items-center sm:px-6">
                                     <span className="inline-block relative">
                                         <img
