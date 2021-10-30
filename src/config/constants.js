@@ -23,6 +23,7 @@ export const COMPANY_NAME = 'cName';
 export const COMPANY_URL = 'cUrl';
 export const COMPANY_APPLICATION_URL = 'cApplicationUrl';
 export const COMPANY_FEATURED = 'cFeatured';
+export const COMPANY_ICON_URL = 'cIconUrl';
 
 // Database Tags Table
 export const TAGS_TABLE = 'tags';
@@ -64,3 +65,8 @@ export const ALL_JOBS_PAGE_SUBTITLE = 'Jobs Subtitle text is cool shittttttttt'
 export const TIER_FREE = 'freeTier';
 export const TIER_POPULAR = 'popularTier';
 export const TIER_SPENCY = 'spencyTier';
+
+// Card styles
+const allStyles = "border-b-2 border-white transform transition duration-500 hover:scale-105 hover:text-red-500 hover:bg-red-800 bg-opacity-95 block px-8 py-2";
+export const FEATURED_STYLE = `bg-featured ${allStyles}`;
+export const REGULAR_STYLE = `text-indigo-600 text-white ${allStyles}`
