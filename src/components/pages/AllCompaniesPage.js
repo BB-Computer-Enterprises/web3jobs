@@ -52,8 +52,8 @@ const AllCompaniesPage = () => {
             companyData.length ? (
                 companyData.map(company => (
                     <li key={company[COMPANY_ID]} className={`${company[COMPANY_FEATURED] ? featuredStyle : regularStyle} border-b-2 border-white transform transition duration-500 hover:scale-105 hover:text-red-500 hover:bg-red-800 bg-opacity-95`}>
-                        <Link to={{ pathname: generateLinkURL(company), state: { company } }} className=" block  px-8 py-2">
-                            <div className="px-4 py-4 flex items-center sm:px-6">
+                        <Link to={{ pathname: generateLinkURL(company), state: { company } }} className=" block px-8 py-2">
+                            <div className="lg:px-4 py-4 flex items-center">
                                 <span className="inline-block relative">
                                     <img
                                         className="inline-block h-12 w-12 rounded-md"
@@ -64,8 +64,7 @@ const AllCompaniesPage = () => {
                                 </span>
                                 <div className="flex-1 pl-8 flex items-center justify-between">
                                     <div className="overflow-ellipsis overflow-hidden">
-                                        <Link to={{ pathname: generateLinkURL(company), state: { company } }}>
-                                            <h1 className="font-medium text-2xl  truncate">{company[COMPANY_NAME]}</h1></Link>
+                                        <h1 className="font-medium text-2xl  truncate">{company[COMPANY_NAME]}</h1>
                                         <p className="text-white ml-1 flex-shrink-0 font-normal overflow-ellipsis overflow-hidden">{company[COMPANY_DESCRIPTION]}</p>
                                     </div>
                                 </div>
@@ -81,27 +80,27 @@ const AllCompaniesPage = () => {
         )
     }
 
-const getContent = () => {
-    return (
-        <div className="bg-gray-dark shadow-2xl overflow-hidden sm:rounded-md">
-            {genCompanies(featuredCompanies)}
-            {genCompanies(companies)}
-            {!!errorText && (
-                <div
-                    className={
-                        "border max-w-sm self-center px-4 py-2 mt-4 text-center text-sm bg-red-100 border-red-300 text-red-400"
-                    }
-                >
-                    {errorText}
-                </div>
-            )}
-        </div>
-    )
-}
+    const getContent = () => {
+        return (
+            <div className="bg-gray-dark shadow-2xl overflow-hidden sm:rounded-md">
+                {genCompanies(featuredCompanies)}
+                {genCompanies(companies)}
+                {!!errorText && (
+                    <div
+                        className={
+                            "border max-w-sm self-center px-4 py-2 mt-4 text-center text-sm bg-red-100 border-red-300 text-red-400"
+                        }
+                    >
+                        {errorText}
+                    </div>
+                )}
+            </div>
+        )
+    }
 
-return (
-    PageContainer(getContent(), COMPANIES_PAGE_TITLE, COMPANIES_PAGE_SUBTITLE)
-);
+    return (
+        PageContainer(getContent(), COMPANIES_PAGE_TITLE, COMPANIES_PAGE_SUBTITLE)
+    );
 }
 
 export default AllCompaniesPage;
