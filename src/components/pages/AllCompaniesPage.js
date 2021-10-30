@@ -18,7 +18,7 @@ const AllCompaniesPage = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        fetchCompanies().catch(console.error);
+        if(!companies) fetchCompanies().catch(console.error);
     }, []);
 
     const fetchCompanies = async () => {
@@ -58,18 +58,10 @@ const AllCompaniesPage = () => {
                                             <div className="overflow-ellipsis overflow-hidden">
                                                 <Link to={{ pathname: generateLinkURL(company), state: { company } }}>
                                                     <h1 className="font-medium text-2xl text-indigo-600 hover:text-red-500 truncate">{company[COMPANY_NAME]}</h1></Link>
-                                                
                                                 <p className="ml-1 flex-shrink-0 font-normal text-gray-500 overflow-ellipsis overflow-hidden">{company[COMPANY_DESCRIPTION]}</p>
                                             </div>
-
                                         </div>
-
-
-
                                     </div>
-
-
-                                  
                                 </Link>
                             </li>
                         ))
@@ -78,7 +70,6 @@ const AllCompaniesPage = () => {
                             {isLoading ? 'Loading...' : 'No companies! 👀'}
                         </span>
                     )}
-
                     {!!errorText && (
                         <div
                             className={
