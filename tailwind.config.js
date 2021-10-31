@@ -7,7 +7,12 @@ module.exports = {
     extend: {
       screens: {
         'dark': { 'raw': '(prefers-color-scheme: dark)' },
-      }
+      },
+      backgroundImage: {
+        'p1': "url('/src/media/pattern1.png')",
+        'p2': "url('/src/media/pattern2.png')",
+        'p3': "url('/src/media/pattern3.png')"
+       }
     },
     colors: {
       transparent: 'transparent',
