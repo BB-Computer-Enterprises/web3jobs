@@ -56,7 +56,7 @@ const AllCompaniesPage = () => {
                         {genListIcon(company[COMPANY_ICON_URL], "", company[COMPANY_FEATURED])}
                         <div className="flex-1 lg:pl-8 pl-5 flex items-center justify-between">
                             <div>
-                                <h1 className="font-medium text-2xl">{company[COMPANY_NAME]}</h1>
+                                <h1 className="font-medium text-3xl lg:text-2xl text-lightyellows">{company[COMPANY_NAME]}</h1>
                                 <p className="text-white lg:ml-1 flex-shrink-0 font-normal overflow-hidden">{company[COMPANY_DESCRIPTION]}</p>
                             </div>
                         </div>
