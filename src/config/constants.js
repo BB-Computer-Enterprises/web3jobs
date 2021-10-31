@@ -56,9 +56,9 @@ export const JOBS_LINK = 'Jobs'
 export const POST_JOB_LINK = 'Post A Job'
 
 // Page titles and subtitles
-export const COMPANIES_PAGE_TITLE = 'Web 3.0 Companies'
+export const COMPANIES_PAGE_TITLE = 'Web3 Companies'
 export const COMPANIES_PAGE_SUBTITLE = 'Subtitle text is cool shittttttttt'
-export const ALL_JOBS_PAGE_TITLE = 'Web 3.0 Jobs'
+export const ALL_JOBS_PAGE_TITLE = 'Web3 Jobs'
 export const ALL_JOBS_PAGE_SUBTITLE = 'Jobs Subtitle text is cool shittttttttt'
 
 // Price tier
