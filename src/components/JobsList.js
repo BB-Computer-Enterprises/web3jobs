@@ -14,7 +14,7 @@ import {
     FEATURED_STYLE,
     REGULAR_STYLE
 } from "@constants/";
-import { genListIcon } from "@util/genListIcon";
+import { genListIcon, genFooterLink, genTagsUrl } from "@util/";
 
 // function that will destructure the job object
 // it pulls out the title, id and company name to be used in the URL
@@ -27,7 +27,7 @@ const sepratetags = (tags, isFeatured) => {
     const style = `${isFeatured ? "bg-gray-dark text-white hover:bg-white hover:text-black" : "bg-indigo-100 text-indigo-800 hover:bg-gray-lightest hover:text-white "} flex-1 items-center px-3 py-0.5 rounded-full text-sm font-medium `
     return tags.map(tag => (
         <span className={style}>
-            {tag}
+            {genFooterLink(tag, genTagsUrl(tag))}
         </span>
     ))
 }
