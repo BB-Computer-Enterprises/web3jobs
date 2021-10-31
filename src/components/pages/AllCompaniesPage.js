@@ -15,7 +15,9 @@ import {
     COMPANY_FEATURED,
     FEATURED_STYLE,
     REGULAR_STYLE,
-    COMPANY_ICON_URL
+    COMPANY_ICON_URL,
+    FEATURED_TEXT_STYLE,
+    REGULAR_TEXT_STYLE
 } from "@constants/";
 import { makeFriendlyUrl } from "@util/sanitize";
 import { loading } from "@util/loading";
@@ -56,7 +58,7 @@ const AllCompaniesPage = () => {
                         {genListIcon(company[COMPANY_ICON_URL], "", company[COMPANY_FEATURED])}
                         <div className="flex-1 lg:pl-8 pl-5 flex items-center justify-between">
                             <div>
-                                <h1 className="font-medium text-3xl lg:text-2xl text-lightyellows">{company[COMPANY_NAME]}</h1>
+                                <h1 className={`${company[COMPANY_FEATURED] ? FEATURED_TEXT_STYLE : REGULAR_TEXT_STYLE}`}>{company[COMPANY_NAME]}</h1>
                                 <p className="text-white lg:ml-1 flex-shrink-0 font-normal overflow-hidden">{company[COMPANY_DESCRIPTION]}</p>
                             </div>
                         </div>

@@ -12,7 +12,9 @@ import {
     COMPANY_ICON_URL,
     COMPANY_FEATURED,
     FEATURED_STYLE,
-    REGULAR_STYLE
+    REGULAR_STYLE,
+    FEATURED_TEXT_STYLE,
+    REGULAR_TEXT_STYLE
 } from "@constants/";
 import { genListIcon, genFooterLink, genTagsUrl } from "@util/";
 
@@ -48,7 +50,7 @@ const JobsList = ({ jobs }) => {
                         {genListIcon(company[COMPANY_ICON_URL], "", company[COMPANY_FEATURED])}
                         <div className="flex-1 pl-8 flex items-center justify-between">
                             <div>
-                                <h1 className="mb-1 font-medium text-2xl lg:text-xl hover:text-red-500 truncate">{job[JOB_TITLE]}</h1>
+                                <h1 className={`${company[COMPANY_FEATURED] ? FEATURED_TEXT_STYLE : REGULAR_TEXT_STYLE}`}>{job[JOB_TITLE]}</h1>
                                 <p className="mb-1 flex-shrink-0 font-normal text-white font-medium">{company[COMPANY_NAME]}</p>
                                 <p className="flex-shrink-0 font-normal text-white ">📅 Posted {daysElapsed(job[JOB_DATE_POSTED])} days ago</p>
                             </div>
