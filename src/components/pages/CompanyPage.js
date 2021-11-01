@@ -45,7 +45,6 @@ const CompanyPage = company => {
     const getContent = () => {
         return (
             <div>
-                
                 <p>Description: {`${cDesc}`}</p>
                 <p>Website: {`${cUrl}`}</p>
                 <Link to={COMPANIES_URL}>Back to All Companies</Link>
@@ -56,7 +55,7 @@ const CompanyPage = company => {
     }
 
     return (
-        PageContainer(getContent(), cName, cDesc)
+        PageContainer(getContent(), { isShown: false })
     );
 };
 

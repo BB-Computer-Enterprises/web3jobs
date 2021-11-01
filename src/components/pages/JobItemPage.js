@@ -141,7 +141,7 @@ const JobItemPage = job => {
     }
 
     return (
-        PageContainer(getContent(), jTitle, jDesc)
+        PageContainer(getContent(), {isShown: false})
     )
 };
 

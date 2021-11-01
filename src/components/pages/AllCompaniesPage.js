@@ -71,8 +71,6 @@ const AllCompaniesPage = () => {
     const getContent = () => {
         return (
             <div className={`${isLoading ? "" : "shadow-2xl"} bg-gray-dark overflow-hidden rounded-md`}>
-                <h2 className="lg:text-6xl text-4xl font-bold text-white text-center pt-10 pb-5 lg:py-10">{COMPANIES_PAGE_TITLE}</h2>
-                <h3 className="lg:text-4xl text-2xl font-bold text-white text-center font-mono">{COMPANIES_PAGE_SUBTITLE}</h3>
                 <span className={"h-full justify-center items-center"} >
                     {isLoading ? loading() : ''}
                 </span>
@@ -88,7 +86,7 @@ const AllCompaniesPage = () => {
     }
 
     return (
-        PageContainer(getContent(), COMPANIES_PAGE_TITLE, COMPANIES_PAGE_SUBTITLE)
+        PageContainer(getContent(), {title: COMPANIES_PAGE_TITLE, subtitle: COMPANIES_PAGE_SUBTITLE, isShown: true})
     );
 }
 
