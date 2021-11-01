@@ -36,9 +36,7 @@ const AllJobsPage = passedInTag => {
      * @returns string that is just a tag
      */
     const parseURLForTag = () => {
-        const { location: {
-            pathname: pathname
-        } } = passedInTag
+        const { location: {pathname} } = passedInTag
         const sectioned = pathname.split('/');
         let lastItem = sectioned[sectioned.length - 1];
         lastItem = lastItem.slice(0, lastItem.length - 5);

@@ -27,9 +27,7 @@ const JobItemPage = job => {
 
     const getContent = () => {
         return (
-
             <div className=" pt-12 pb-16 px- sm:pt-16 sm:px-6 ">
-
                 <div className="text-base max-w-prose mx-auto ">
                     <img
                         className="inline-block lg:left-14 lg:w-14 h-14 w-14 rounded-md"
