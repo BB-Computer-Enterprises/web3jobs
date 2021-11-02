@@ -168,12 +168,9 @@ const CompanyPage = company => {
     const getContent = () => {
         return (
             <div className="relative text-white overflow-hidden">
-                <div className="relative px-4 sm:px-6 lg:px-8">
+                <div className="relative px-4 sm:px-6">
                     <div className="text-lg max-w-prose mx-auto">
                         <h1>
-                            {/* <span className="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase">
-                                Introducing
-                            </span> */}
                             <span className="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
                                 <div><img
                                     className="inline-block h-24 w-24 rounded-full"
@@ -192,7 +189,7 @@ const CompanyPage = company => {
                         {cards()}
                     </div>
                     <h1 className="mt-8 text-2xl leading-8 mb-5">Current jobs 👇</h1>
-                    <div className="overflow-hidden">
+                    <div className="">
                         <JobsList jobs={linkedJobs} isLoading />
                     </div>
                 </div>
