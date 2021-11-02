@@ -6,10 +6,10 @@ import {
     COMPANY_DESCRIPTION,
     COMPANY_ID,
     COMPANY_NAME,
-    COMPANY_URL
+    COMPANY_URL,
+    COMPANY_ICON_URL,
 } from "@constants/";
 import JobsList from "../JobsList";
-import { COMPANY_APPLICATION_URL, COMPANY_ICON_URL } from "@config/constants";
 
 const CompanyPage = company => {
     const [linkedJobs, setJobs] = useState([]);
@@ -27,7 +27,6 @@ const CompanyPage = company => {
                     [COMPANY_URL]: cUrl,
                     [COMPANY_ID]: cId,
                     [COMPANY_ICON_URL]: cIconUrl,
-                    [COMPANY_APPLICATION_URL]: cAppUrl
                 }
             }
         }
@@ -185,6 +184,7 @@ const CompanyPage = company => {
                         </p>
                         <p className="mt-8 text-2xl text-gray-500 leading-8">
                             <p>🔗: <a href={`${cUrl}`}>{cUrl}</a></p>
+                            {}
                         </p>
                         {cards()}
                     </div>
