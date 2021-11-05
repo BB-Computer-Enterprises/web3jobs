@@ -22,9 +22,10 @@ export default function HomePage() {
             },
             body: JSON.stringify(data)
         }).then(result => {
-            console.log(result)
+            
             setThankYouVisible(true);
             setEmail("");
+
             return true;
         }).catch(err => {
             return false;
