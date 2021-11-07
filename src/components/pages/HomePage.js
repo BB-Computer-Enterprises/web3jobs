@@ -12,7 +12,6 @@ export default function HomePage() {
         const data = {
             formName: 'formName', formEmail: email, formMessage: 'New Web3 Signup'
         }
-        console.log(process.env)
         data.formEmail.length === 0 ? console.log('Fill in the field') :
         fetch(HOME_PAGE_FETCH_URL, {
             method: "POST",
