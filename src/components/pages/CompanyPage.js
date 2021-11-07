@@ -2,7 +2,7 @@ import { useState, useEffect} from "react";
 import { CheckCircleIcon, XIcon } from '@heroicons/react/solid';
 import PageContainer from "../PageContainer";
 import { getLinkedJobs } from "@db/";
-import { genTwitterCard } from "@util/genTwitterCard";
+import { getLinkCard } from "@util/genLinkCard";
 import {
     COMPANY_DESCRIPTION,
     COMPANY_ID,
@@ -181,7 +181,7 @@ const CompanyPage = company => {
     const getContent = () => {
         return (
             <div className="relative text-white overflow-hidden">
-                {genTwitterCard(headerInfo)}
+                {getLinkCard(headerInfo)}
                 <div className="relative px-4 sm:px-6">
                     <div className="text-lg max-w-prose mx-auto">
                         <h1>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { CheckCircleIcon, XIcon } from '@heroicons/react/solid'
 import { HOME_PAGE_FETCH_URL, HOME_PAGE_API_KEY } from "@constants/"
-import { genTwitterCard } from "@util/genTwitterCard";
+import { getLinkCard } from "@util/genLinkCard";
 
 export default function HomePage() {
     const [email, setEmail] = useState("");
@@ -98,7 +98,7 @@ export default function HomePage() {
 
     return (
         <div className="relative overflow-hidden">
-            {genTwitterCard(headerInfo)}
+            {getLinkCard(headerInfo)}
             <main>
                 <div className="pt-10 bg-gray sm:pt-16 lg:pt-8 lg:pb-14 lg:overflow-hidden">
                     <div className="mx-auto max-w-7xl lg:px-8">
