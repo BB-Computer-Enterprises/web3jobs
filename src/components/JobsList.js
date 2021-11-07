@@ -47,7 +47,6 @@ const genUrlWithRefer = job => {
 
 const correctDaysString = data => {
     const days = daysElapsed(data);
-    console.log(days)
     if( days <= 1 ) return 'Today!'
 
     const plural = (days === 1) ? 'day' : 'days'
