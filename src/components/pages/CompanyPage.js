@@ -37,7 +37,7 @@ const CompanyPage = company => {
     } = company;
 
     const headerInfo = {
-        title: cName,
+        title: `Web3 ${cName}`,
         imageURL: cIconUrl,
         description: `Web3 Company: ${cDesc}`
     }
