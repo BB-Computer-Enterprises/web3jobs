@@ -2,6 +2,7 @@ import { useState, useEffect} from "react";
 import { CheckCircleIcon, XIcon } from '@heroicons/react/solid';
 import PageContainer from "../PageContainer";
 import { getLinkedJobs } from "@db/";
+import { genTwitterCard } from "@util/genTwitterCard";
 import {
     COMPANY_DESCRIPTION,
     COMPANY_ID,
@@ -34,6 +35,12 @@ const CompanyPage = company => {
             }
         }
     } = company;
+
+    const headerInfo = {
+        title: cName,
+        imageURL: cIconUrl,
+        description: `Web3 Company: ${cDesc}`
+    }
 
     useEffect(() => {
         getJobs().catch(console.error);
@@ -174,6 +181,7 @@ const CompanyPage = company => {
     const getContent = () => {
         return (
             <div className="relative text-white overflow-hidden">
+                {genTwitterCard(headerInfo)}
                 <div className="relative px-4 sm:px-6">
                     <div className="text-lg max-w-prose mx-auto">
                         <h1>
