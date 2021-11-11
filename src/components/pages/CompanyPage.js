@@ -44,7 +44,6 @@ const CompanyPage = company => {
             setCompany(company.location.state.company)
             getJobs(company.location.state.company[COMPANY_ID])
         }
-
         else {
             const id = company.match.params.cid;
             let { data: currCompany, error } = await getSingleCompany(id);
